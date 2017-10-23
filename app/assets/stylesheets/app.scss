@@ -1,0 +1,30 @@
+body {
+  background-color: #FFF2E8;
+}
+
+.top-bar {
+  color: #FFFBF4;
+  background-color: #DDCFB3;
+}
+
+h1, h2, h3 {
+  color: #335032;
+}
+
+.button {
+  background-color: #3B5B5A;
+}
+
+.button:hover {
+  background-color: #517271;
+}
+
+.title {
+  padding-left: 1em;
+}
+
+.horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
