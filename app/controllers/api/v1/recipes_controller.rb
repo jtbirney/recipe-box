@@ -3,7 +3,7 @@ module Api
     class RecipesController < ApplicationController
       def index
         # CODE TO GET RECIPES FROM EDEMAN API
-        response = HTTParty.get('https://api.edamam.com/search?q=chicken+breast&app_id=0e3a1bd0&app_key=f9d81b784c2a254bdc1e05504881f36f&to=10')
+        response = HTTParty.get('https://api.edamam.com/search?q=chicken+breast')
         hits = response.parsed_response["hits"]
         recipes = []
 
