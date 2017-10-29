@@ -39,11 +39,8 @@ class RecipeContainer extends Component {
           {this.state.recipe}
         </div>
         <div className="row">
-          <div className="small-6 columns">
+          <div className="small-12 columns">
             <a className="button expanded horizontal-center" onClick={this.handleClick}>Get Recipes</a>
-          </div>
-          <div className="small-6 columns">
-            <a className="button expanded horizontal-center">My Recipe Box</a>
           </div>
         </div>
         <div className="row">

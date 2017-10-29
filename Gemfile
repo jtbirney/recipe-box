@@ -12,6 +12,7 @@ gem 'httparty'
 gem 'nokogiri'
 gem 'mechanize'
 gem 'pismo'
+gem 'bcrypt', '3.1.11'
 
 group :development do
   gem 'listen', '~> 3.0.5'
