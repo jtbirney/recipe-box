@@ -30,11 +30,6 @@ class IndexContainer extends Component {
     })
     return(
       <div>
-        <div className="top-bar">
-          <div className="top-bar-left">
-            <h3 className="title">Recipe-Box</h3>
-          </div>
-        </div>
         <div>
           {this.state.recipe}
         </div>
