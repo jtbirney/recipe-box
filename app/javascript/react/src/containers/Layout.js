@@ -63,7 +63,7 @@ class Layout extends Component {
       <div>
         <div className="top-bar">
           <div className="top-bar-left">
-            <Link to='/'><h3 className="menu-text">Recipe-Box</h3></Link>
+            <Link to='/'><h3 className="menu-text">Cuisine-Collection</h3></Link>
           </div>
           <div className="top-bar-right">
             {this.state.username === "" &&
