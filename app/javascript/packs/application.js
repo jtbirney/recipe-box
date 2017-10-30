@@ -9,14 +9,14 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import RecipeContainer from '../react/src/containers/RecipeContainer'
+import App from '../react/src/App'
 
 document.addEventListener('DOMContentLoaded', () => {
   let reactElement = document.getElementById('app')
 
   if (reactElement) {
     ReactDOM.render(
-      <RecipeContainer />,
+      <App />,
       reactElement
     )
   }

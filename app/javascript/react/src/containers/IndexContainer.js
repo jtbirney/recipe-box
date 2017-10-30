@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import RecipeTile from '../components/RecipeTile'
 
-class RecipeContainer extends Component {
+class IndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -51,4 +51,4 @@ class RecipeContainer extends Component {
   }
 }
 
-export default RecipeContainer
+export default IndexContainer
