@@ -14,11 +14,41 @@ class SignupForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.validateFields = this.validateFields.bind(this)
+  }
+
+  validateFields(name, value) {
+    if (name !== "passwordConfirmation") {
+      if (value === '' || value === ' ') {
+        let label = name.charAt(0).toUpperCase() + name.slice(1)
+        let newError = { [name]: `${label} cannot be blank`}
+        this.setState({ errors: Object.assign(this.state.errors, newError) })
+        return false
+      } else {
+        let errorState = this.state.errors
+        delete errorState[name]
+        this.setState({ errors: errorState })
+        return true
+      }
+    } else {
+      if (value !== this.state.password) {
+        let newError = { [name]: `Passwords do not match`}
+        this.setState({ errors: Object.assign(this.state.errors, newError) })
+        return false
+      } else {
+        let errorState = this.state.errors
+        delete errorState[name]
+        delete errorState.password_confirmation
+        this.setState({ errors: errorState })
+        return true
+      }
+    }
   }
 
   handleChange(event) {
     let value = event.target.value
     let name = event.target.name
+    this.validateFields(name, value)
     this.setState({ [name]: value })
   }
 
@@ -43,13 +73,9 @@ class SignupForm extends Component {
       body: formPayloadJSON
     }).then(response => response.json())
       .then(response => {
-        console.log(response.errors)
         let errors = {}
         if (response.errors) {
-          console.log(Object.keys(response.errors))
-
           Object.keys(response.errors).forEach((key) => {
-            console.log(key)
             let capitalKey = key.charAt(0).toUpperCase() + key.slice(1)
             if (key === 'password_confirmation') {
               capitalKey = 'Password Confirmation'
@@ -69,7 +95,7 @@ class SignupForm extends Component {
     let currentState = this.state.errors
     if (Object.keys(this.state.errors).length > 0) {
       errorItems = Object.values(this.state.errors).map(error => {
-        return(<li key={error}>{error}</li>)
+        return(<p key={error}>{error}</p>)
       })
       errorDiv = <div className="callout alert">{errorItems}</div>
     }
@@ -112,4 +138,4 @@ class SignupForm extends Component {
   }
 }
 
-export default withRouter(SignupForm)
+export default SignupForm

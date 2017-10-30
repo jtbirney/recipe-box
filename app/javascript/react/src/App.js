@@ -3,6 +3,7 @@ import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 import IndexContainer from './containers/IndexContainer'
 import Layout from './containers/Layout'
 import SignupForm from './containers/SignupForm'
+import SigninForm from './containers/SigninForm'
 
 const App = props => {
   return(
