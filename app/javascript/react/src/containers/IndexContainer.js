@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import RecipeTile from '../components/RecipeTile'
 
-class RecipeContainer extends Component {
+class IndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -30,20 +30,12 @@ class RecipeContainer extends Component {
     })
     return(
       <div>
-        <div className="top-bar">
-          <div className="top-bar-left">
-            <h3 className="title">Recipe-Box</h3>
-          </div>
-        </div>
         <div>
           {this.state.recipe}
         </div>
         <div className="row">
-          <div className="small-6 columns">
+          <div className="small-12 columns">
             <a className="button expanded horizontal-center" onClick={this.handleClick}>Get Recipes</a>
-          </div>
-          <div className="small-6 columns">
-            <a className="button expanded horizontal-center">My Recipe Box</a>
           </div>
         </div>
         <div className="row">
@@ -54,4 +46,4 @@ class RecipeContainer extends Component {
   }
 }
 
-export default RecipeContainer
+export default IndexContainer
