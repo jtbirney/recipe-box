@@ -33,9 +33,9 @@ class IndexContainer extends Component {
         <div>
           {this.state.recipe}
         </div>
-        <div className="row">
-          <div className="small-12 columns">
-            <a className="button expanded horizontal-center" onClick={this.handleClick}>Get Recipes</a>
+        <div className="grid-x">
+          <div className="small-6 cell">
+            <a className="button horizontal-center" onClick={this.handleClick}>Get Recipes</a>
           </div>
         </div>
         <div className="row">

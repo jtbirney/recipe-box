@@ -11,7 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  *= require foundation_and_overrides
+ *= require foundation
+ *= require_self
  *= require_tree .
  *= require app
- *= require_self
  */
+
+ @import "foundation_and_overrides"
