@@ -26,3 +26,19 @@ h1, h2, h3 {
 .title {
   padding-left: 1em;
 }
+
+a {
+  color: #335032;
+}
+
+a:hover {
+  color: #517271;
+}
+
+a:focus {
+  color: #517271;
+}
+
+.callout {
+  border: none;
+}

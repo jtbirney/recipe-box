@@ -36,10 +36,10 @@ class IndexContainer extends Component {
         </div>
         <div className="grid-x">
           <div className="small-12 cell text-center">
-            <a className="button expanded" onClick={this.handleClick}>Get Recipes</a>
+            <a className="button expanded" onClick={this.handleClick}>Find New Recipes</a>
           </div>
         </div>
-        <div className="row">
+        <div className="grid-x grid-margin-x">
           {recipes}
         </div>
       </div>
