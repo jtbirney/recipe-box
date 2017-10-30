@@ -3,14 +3,49 @@ module Api
     class RecipesController < ApplicationController
       def index
         # CODE TO GET RECIPES FROM EDEMAN API
-        response = HTTParty.get('https://api.edamam.com/search?q=chicken+breast&app_id=0e3a1bd0&app_key=f9d81b784c2a254bdc1e05504881f36f&to=10')
-        hits = response.parsed_response["hits"]
+        # response = HTTParty.get('https://api.edamam.com/search?q=chicken+breast&app_id=0e3a1bd0&app_key=f9d81b784c2a254bdc1e05504881f36f&to=10')
+        # hits = response.parsed_response["hits"]
+        # recipes = []
+
+        # Test data to avoid making repeated API calls
+        response = {
+          "hits": [
+            {
+              "recipe": {
+                "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_121b40b4af5f8f9c3dbc0272cc1a70a5",
+                "label": "Chicken Breast With Salsa",
+                "image": "https://www.edamam.com/web-img/b4e/b4ecf425e5fcd21390a1203976f5fef8.jpg",
+                "source": "Epicurious",
+                "url": "http://www.epicurious.com/recipes/food/views/Chicken-Breast-with-Salsa-242444"
+              }
+            },
+            {
+              "recipe": {
+                "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_a95b1340fb3d2945287a4b31daf1c94f",
+                "label": "Grilled stuffed chicken breast",
+                "image": "https://www.edamam.com/web-img/ac9/ac9d4c23885c77b2747a798ff756b862.jpg",
+                "source": "La Cucina Italiana",
+                "url": "http://lacucinaitalianamagazine.com/recipe/grilled_stuffed_chicken_breast_"
+              }
+            },
+            {
+              "recipe": {
+                "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_7b401f7932461d2c200de073b27f293c",
+                "label": "Chicken Breast with Fresh Sage",
+                "image": "https://www.edamam.com/web-img/80b/80b93a7122b7146dea2af3212a4f64a9.JPG",
+                "source": "Food52",
+                "url": "https://food52.com/recipes/2451-chicken-breast-with-fresh-sage"
+              }
+            }
+          ]
+        }
+        hits = response[:hits]
         recipes = []
 
         hits.each do |hit|
-          url = hit["recipe"]["url"]
-          title = hit["recipe"]["label"]
-          image = hit["recipe"]["image"]
+          url = hit[:recipe][:url]
+          title = hit[:recipe][:label]
+          image = hit[:recipe][:image]
           recipes.push({ url: url, title: title, image: image })
         end
         #
