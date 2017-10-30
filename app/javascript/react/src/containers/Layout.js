@@ -8,10 +8,11 @@ const Layout = props => {
           <h3 className="menu-text">Recipe-Box</h3>
         </div>
         <div className="top-bar-right">
-
         </div>
       </div>
-      {props.children}
+      <div className="grid-container">
+        {props.children}
+      </div>
     </div>
   )
 }
