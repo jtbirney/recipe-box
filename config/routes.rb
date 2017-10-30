@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root "recipes#index"
+  get    '/signup',  to: 'recipes#index'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :recipes, only: [:index]
+      resources :users, only: [:create]
     end
   end
 end
