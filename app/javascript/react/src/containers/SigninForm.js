@@ -80,7 +80,7 @@ class SigninForm extends Component {
             value={this.state.password}
             handleChange={this.handleChange}
           />
-          <input type="submit" className="button" value="Submit" />
+          <input type="submit" className="button" value="Submit" id="sign-in-submit"/>
         </form>
       </span>
     )

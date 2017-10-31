@@ -132,7 +132,7 @@ class SignupForm extends Component {
           value={this.state.passwordConfirmation}
           handleChange={this.handleChange}
         />
-        <input type="submit" className="button" value="Submit" />
+        <input type="submit" className="button" value="Submit" id="sign-up-submit"/>
       </form>
     )
   }
