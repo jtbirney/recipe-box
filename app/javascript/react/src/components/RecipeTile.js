@@ -2,9 +2,15 @@ import React from 'react'
 
 const RecipeTile = props => {
   return(
-    <div className="medium-4 columns">
-      <img src={props.recipe.image} alt={props.recipe.name}></img>
-      <a href={props.recipe.url}>{props.recipe.title}</a>
+    <div className="small-6 medium-4 cell callout text-center">
+      <a href={props.recipe.url}>
+        <div>
+          <img src={props.recipe.image} alt={props.recipe.name}></img>
+        </div>
+        <div>
+          <h4>{props.recipe.title}</h4>
+        </div>
+      </a>
     </div>
   )
 }
