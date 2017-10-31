@@ -18,6 +18,7 @@ class Layout extends Component {
       username: username,
       userId: userId
     })
+    this.props.route.setUser(username, userId)
   }
 
   logOut(event) {
@@ -36,6 +37,8 @@ class Layout extends Component {
           username: "",
           userId: 0
         })
+        this.props.route.setUser("", 0)
+        this.props.router.push('/')
       })
     }
 

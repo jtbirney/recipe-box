@@ -13,6 +13,7 @@ gem 'nokogiri'
 gem 'mechanize'
 gem 'pismo'
 gem 'bcrypt', '3.1.11'
+gem 'font-awesome-sass'
 
 group :development do
   gem 'listen', '~> 3.0.5'
@@ -29,6 +30,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'warden'
+  gem 'rails_warden'
 end
 
 group :production do

@@ -16,7 +16,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       # @controller = Api::V1::SessionsController.new
       # post :create, params: { user: { name: "User1", password: "pass1"} }
       # @controller = Api::V1::UsersController.new
-      session[:user_id] = user.id
+      login_as(user, :scope => :user)
       get :index
       expect(response.status).to eq 200
       expect(response.content_type).to eq "application/json"

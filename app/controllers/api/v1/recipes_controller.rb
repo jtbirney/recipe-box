@@ -1,4 +1,6 @@
 class Api::V1::RecipesController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
+
   def index
     # CODE TO GET RECIPES FROM EDEMAN API
     # response = HTTParty.get("https://api.edamam.com/search?q=chicken+pot+pie&app_id=#{ENV["RECIPES_APP_ID"]}&app_key=#{ENV["RECIPES_API_KEY"]}&to=10")
@@ -84,5 +86,24 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   def create
+    recipe = Recipe.find_by(url: recipe_params[:url])
+    if recipe && !current_user.recipes.include?(recipe)
+      current_user.recipes << recipe
+    elsif !recipe
+      recipe = Recipe.create(recipe_params)
+      current_user.recipes << recipe
+    end
+    render json: { status: 'SUCCESS', message: 'Recipe Added', recipe: recipe }, status: :created
+  end
+
+  def destroy
+    recipe = Recipe.find(params[:id])
+    current_user.recipes.delete(recipe)
+    render json: { status: 'SUCCESS', message: 'Recipe Removed', recipe: recipe }, status: :ok
+  end
+
+  private
+  def recipe_params
+    params.require(:recipe).permit(:title, :url, :image)
   end
 end
