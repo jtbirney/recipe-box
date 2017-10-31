@@ -13,9 +13,10 @@ class Layout extends Component {
     this.logOut = this.logOut.bind(this)
   }
 
-  logIn(username) {
+  logIn(username, userId) {
     this.setState({
-      username: username
+      username: username,
+      userId: userId
     })
   }
 

@@ -45,7 +45,7 @@ class SigninForm extends Component {
           this.setState({ errors: { login: response.message } })
         } else {
           $('#login').foundation('close')
-          this.props.logIn(response.user.name)
+          this.props.logIn(response.user.name, response.user.id)
         }
       })
   }

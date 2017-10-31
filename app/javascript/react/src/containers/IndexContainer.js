@@ -21,6 +21,7 @@ class IndexContainer extends Component {
 
 
   render() {
+    if (document.getElementBy)
     let recipes = this.state.recipes.map(recipe => {
       return(
         <RecipeTile
@@ -34,9 +35,12 @@ class IndexContainer extends Component {
         <div>
           {this.state.recipe}
         </div>
-        <div className="grid-x">
-          <div className="small-12 cell text-center">
+        <div className="grid-x grid-margin-x">
+          <div className="small-6 cell text-center">
             <a className="button expanded" onClick={this.handleClick}>Find New Recipes</a>
+          </div>
+          <div className="small-6 cell text-center">
+            <a className="button expanded" onClick={this.handleClick}>My Recipes</a>
           </div>
         </div>
         <div className="grid-x grid-margin-x">
