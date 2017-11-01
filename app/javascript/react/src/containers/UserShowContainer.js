@@ -69,6 +69,7 @@ class UserShowContainer extends Component {
 
     return(
       <div className="grid-container">
+        <div className="vertical-spacer"></div>
         <div className="grid-x grid-margin-x">
           <div className="small-12 cell text-center">
             <h3>{this.state.error}</h3>

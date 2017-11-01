@@ -2,18 +2,38 @@ class Api::V1::RecipesController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
+    url = "https://api.edamam.com/search?q=#{params[:query]}&app_id=#{ENV["RECIPES_APP_ID"]}&app_key=#{ENV["RECIPES_API_KEY"]}"
+    params.each do |key, value|
+      key_snake = key.underscore
+      key_dash = key_snake.gsub(/_/, '-')
+      if value == "true"
+        if key_dash == "balanced" || key_dash == "low-fat" || key_dash == "high-protien" ||key_dash == "low-carb"
+          url << "&diet=#{key_dash}"
+        else
+          url << "&health=#{key_dash}"
+        end
+      end
+    end
+    if params[:from]
+      url << "&from=#{params[:from]}"
+    end
+    if params[:ingredients]
+      url << "&ingr=#{params[:ingredients]}"
+    end
+
     # CODE TO GET RECIPES FROM EDEMAN API
-    # response = HTTParty.get("https://api.edamam.com/search?q=chicken+pot+pie&app_id=#{ENV["RECIPES_APP_ID"]}&app_key=#{ENV["RECIPES_API_KEY"]}&to=10")
+    # response = HTTParty.get(url)
     # hits = response.parsed_response["hits"]
     # recipes = []
     #
-    # hits.each do |hit|
-    #   url = hit["recipe"]["url"]
-    #   title = hit["recipe"]["label"]
-    #   image = hit["recipe"]["image"]
-    #   recipes.push({ url: url, title: title, image: image })
+    # if hits.count > 0
+    #   hits.each do |hit|
+    #     url = hit["recipe"]["url"]
+    #     title = hit["recipe"]["label"]
+    #     image = hit["recipe"]["image"]
+    #     recipes.push({ url: url, title: title, image: image })
+    #   end
     # end
-
 
     # Test data to avoid making repeated API calls
     response = {
@@ -21,7 +41,7 @@ class Api::V1::RecipesController < ApplicationController
         {
           "recipe": {
             "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_121b40b4af5f8f9c3dbc0272cc1a70a5",
-            "label": "Chicken Breast With Salsa",
+            "label": params[:query],
             "image": "https://www.edamam.com/web-img/b4e/b4ecf425e5fcd21390a1203976f5fef8.jpg",
             "source": "Epicurious",
             "url": "http://www.epicurious.com/recipes/food/views/Chicken-Breast-with-Salsa-242444"
@@ -44,37 +64,32 @@ class Api::V1::RecipesController < ApplicationController
             "source": "Food52",
             "url": "https://food52.com/recipes/2451-chicken-breast-with-fresh-sage"
           }
+        },
+        {
+          "recipe": {
+            "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_121b40b4af5f8f9c3dbc0272cc1a70a5",
+            "label": url,
+            "image": "https://www.edamam.com/web-img/b4e/b4ecf425e5fcd21390a1203976f5fef8.jpg",
+            "source": "Epicurious",
+            "url": "http://www.epicurious.com/recipes/food/views/Chicken-Breast-with-Salsa-242444"
+          }
         }
       ]
     }
+
     hits = response[:hits]
     recipes = []
 
-    hits.each do |hit|
-      url = hit[:recipe][:url]
-      title = hit[:recipe][:label]
-      image = hit[:recipe][:image]
-      recipes.push({ url: url, title: title, image: image })
+    if hits.count > 0
+      hits.each do |hit|
+        url = hit[:recipe][:url]
+        title = hit[:recipe][:label]
+        image = hit[:recipe][:image]
+        recipes.push({ url: url, title: title, image: image })
+      end
     end
-    #
+
     render json: { recipes: recipes }
-
-    # page = Nokogiri::HTML(open('http://www.thekitchn.com/recipe-pepperoni-pizza-baked-pasta-249774'))
-    # # get title using Nokogiri
-    # title = page.title
-    #
-    # body = page.css("#recipe")
-    # recipe = ""
-    # body.traverse do |node|
-    #   if node.text
-    #     recipe += node.text
-    #   end
-    # end
-    # this works, but gets more text than I want...
-
-    # doc = Pismo::Document.new("http://allrecipes.com/recipe/23431/to-die-for-fettuccine-alfredo/?internalSource=popular&referringContentType=home%20page&clickId=cardslot%203")
-    # recipe = doc.body
-    # render json: { recipes: recipe }
   end
 
   def show
