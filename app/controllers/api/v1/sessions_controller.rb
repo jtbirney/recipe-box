@@ -1,7 +1,7 @@
 class Api::V1::SessionsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
   def create
-    user = User.find_by(name: login_params[:name].downcase)
+    user = User.find_by(name: login_params[:name])
     if user && user.authenticate(login_params[:password])
       log_in(user)
       render json: { status: 'SUCCESS', message: 'Account Created', user: user }, status: :created

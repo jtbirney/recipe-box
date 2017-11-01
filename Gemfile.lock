@@ -169,8 +169,6 @@ GEM
       rails_stdout_logging
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
-    rails_warden (0.5.8)
-      warden (>= 1.0.0)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -242,8 +240,6 @@ GEM
       unf_ext
     unf_ext (0.0.7.4)
     valid_attribute (2.0.0)
-    warden (1.2.7)
-      rack (>= 1.0)
     webpacker (3.0.2)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -277,7 +273,6 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.2)
   rails_12factor
-  rails_warden
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   shoulda

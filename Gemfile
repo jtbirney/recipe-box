@@ -30,8 +30,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda'
   gem 'valid_attribute'
-  gem 'warden'
-  gem 'rails_warden'
 end
 
 group :production do
