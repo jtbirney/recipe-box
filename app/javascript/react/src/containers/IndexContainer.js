@@ -164,9 +164,9 @@ class IndexContainer extends Component {
   render() {
     let searchClass
     if (this.state.userId === 0) {
-      searchClass = "small-12"
+      searchClass = "medium-12"
     } else {
-      searchClass = "small-6"
+      searchClass = "medium-6"
     }
     let recipes = this.state.recipes.map(recipe => {
       let bookmark = () => this.saveRecipe(recipe);
@@ -185,12 +185,12 @@ class IndexContainer extends Component {
       <div>
         <div className="vertical-spacer"></div>
         <div className="grid-x grid-margin-x">
-          <div className={`${searchClass} cell text-center`}>
-            <a className="button expanded" onClick={this.handleShowSearchClick}>Find New Recipes</a>
+          <div className={`small-12 ${searchClass} cell text-center`}>
+            <a className="button large expanded" onClick={this.handleShowSearchClick}>Find New Recipes</a>
           </div>
           {this.state.userId !== 0 &&
-            <div className="small-6 cell text-center">
-              <Link to={`/users/${this.state.userId}`} className="button expanded">My Recipes</Link>
+            <div className="small-12 medium-6 cell text-center">
+              <Link to={`/users/${this.state.userId}`} id="my-recipes" className="button large expanded">My Recipes</Link>
             </div>
           }
         </div>
@@ -215,7 +215,7 @@ class IndexContainer extends Component {
           {recipes}
           {this.state.recipes.length > 0 &&
             <div className="small-6 medium-4 cell text-center">
-              <a className="button" onClick={this.showMore}>More</a>
+              <a className="button large" id="show-more" onClick={this.showMore}>More</a>
             </div>
           }
         </div>

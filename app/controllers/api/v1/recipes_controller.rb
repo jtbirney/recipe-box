@@ -93,7 +93,7 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   def show
-    if current_user.id == params[:id].to_i
+    if current_user && current_user.id == params[:id].to_i
       render json: { recipes: current_user.recipes}
     else
       render json: { error: "Hmm... We can't find your recipes. Have you logged in?" }

@@ -35,4 +35,11 @@ describe('SignupForm', () => {
     expect(SignupForm.prototype.handleSubmit).toHaveBeenCalled()
   })
 
+  it('should not render error items initially', () => {
+
+  })
+
+  it('should render error items when fields are completed with invalid information', () => {
+
+  })
 });

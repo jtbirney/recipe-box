@@ -1,6 +1,7 @@
+import React from 'react';
+import { Link } from 'react-router';
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
-import React from 'react';
 import Layout from '../../src/containers/Layout'
 import SigninForm from '../../src/containers/SigninForm'
 
@@ -21,7 +22,7 @@ describe('Layout', () => {
   });
 
   it('should render a link with className menu-text and text "MenuBox"', () => {
-    expect(wrapper.find('.menu-text')).toHaveTagName('h3')
+    expect(wrapper.find('.menu-text')).toHaveTagName('h2')
     expect(wrapper.find('.menu-text')).toHaveText('MenuBox')
   });
 
@@ -29,7 +30,12 @@ describe('Layout', () => {
     expect(wrapper.find('.button').first()).toHaveText('Sign In')
   });
 
-  it('should render a SigninForm Component', () => {
+  it('should not render a SigninForm Component', () => {
+    expect(wrapper.find(SigninForm)).not.toBePresent()
+  });
+
+  it('should render a SigninForm Component after the Sign In button is clicked', () => {
+    wrapper.find('#show-sign-in').first().simulate('click')
     expect(wrapper.find(SigninForm)).toBePresent()
   });
 

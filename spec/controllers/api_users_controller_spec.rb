@@ -13,7 +13,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     end
 
     it "returnes current username and id if user is logged in" do
-      get :index, session: { user_id: user.id}
+      get :index, session: { user_id: user.id }
       expect(response.status).to eq 200
       expect(response.content_type).to eq "application/json"
       returned_json = JSON.parse(response.body)

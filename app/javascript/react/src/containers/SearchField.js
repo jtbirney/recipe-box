@@ -19,7 +19,7 @@ class SearchField extends Component {
     return(
       <form className="small-10 small-offset-1" onSubmit={this.props.handleSearchSubmit}>
         <div className="grid-x">
-          <input className="small-12 medium-10 cell"
+          <input className="auto cell"
             type="search"
             id="recipesearch"
             name="recipesearch"
@@ -27,8 +27,8 @@ class SearchField extends Component {
             value={this.props.value}
             onChange={this.props.handleSearchChange}
           />
-          <input type="submit" className="button small-6 medium-1 cell" value="Search" />
-          <a className="button small-6 medium-1 cell" onClick={this.showFilters}>Filter</a>
+          <input type="submit" className="button large shrink cell" value="Search" />
+          <a className="button large shrink cell" onClick={this.showFilters}>Filter</a>
         </div>
         { this.state.filters &&
           <FilterBox

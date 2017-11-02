@@ -61,5 +61,10 @@ require "capybara/rails"
 require "valid_attribute"
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'vcr_cassettes'
+  c.hook_into :webmock
 end

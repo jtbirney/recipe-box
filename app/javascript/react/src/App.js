@@ -27,8 +27,8 @@ class App extends Component {
       <Router history={browserHistory}>
         <Route path='/' component={Layout} setUser={this.setUser}>
           <IndexRoute component={IndexContainer} user={this.state}/>
-          <Route path='/signup' component={SignupForm}/>
-          <Route path='/users/:id' component={UserShowContainer}/>
+            <Route path='/signup' component={SignupForm}/>
+            <Route path='/users/:id' component={UserShowContainer}/>
         </Route>
       </Router>
     )

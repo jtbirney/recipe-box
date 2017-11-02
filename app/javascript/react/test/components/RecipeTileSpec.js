@@ -31,5 +31,13 @@ describe('RecipeTile', () => {
 
   it('should render an h4 tag with the recipe title', () => {
     expect(wrapper.find('h4')).toHaveText('Chicken Soup');
-  });
+  })
+
+  it('should not render an add icon', () => {
+
+  })
+
+  it('should render an add icon if the user is logged in', () => {
+    
+  })
 });

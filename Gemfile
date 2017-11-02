@@ -24,12 +24,18 @@ end
 group :development, :test do
   gem 'dotenv-rails'
   gem 'capybara'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'launchy', require: false
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'faker'
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do
