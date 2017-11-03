@@ -6,7 +6,8 @@ import FormField from '../../src/components/FormField'
 
 describe('SignupForm', () => {
   let wrapper,
-      username = "user1";
+      username = "user1",
+      newError = { signUp: 'Name cannot be blank'};
 
   beforeEach(() => {
     spyOn(SignupForm.prototype, 'handleChange').and.callThrough()
@@ -36,10 +37,11 @@ describe('SignupForm', () => {
   })
 
   it('should not render error items initially', () => {
-
+    expect(wrapper.find('.alert')).not.toBePresent()
   })
 
   it('should render error items when fields are completed with invalid information', () => {
-
+    wrapper.setState({ errors: newError })
+    expect(wrapper.find('.alert')).toHaveText('Name cannot be blank')
   })
 });

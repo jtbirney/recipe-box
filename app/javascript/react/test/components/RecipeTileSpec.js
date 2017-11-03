@@ -16,6 +16,7 @@ describe('RecipeTile', () => {
     wrapper = mount(
       <RecipeTile
         recipe={recipe}
+        user={0}
       />
     )
   })
@@ -34,10 +35,11 @@ describe('RecipeTile', () => {
   })
 
   it('should not render an add icon', () => {
-
+    expect(wrapper.find('.fa')).not.toBePresent()
   })
 
   it('should render an add icon if the user is logged in', () => {
-    
+    wrapper.setProps({ user: 1 });
+    expect(wrapper.find('.fa')).toBePresent()
   })
 });

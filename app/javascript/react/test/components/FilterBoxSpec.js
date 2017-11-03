@@ -29,8 +29,6 @@ describe('FilterBox', () => {
 
   it('should render a select tag with the value of 10 and options no limit and 1 through 15', () => {
     expect(wrapper.find('select')).toHaveValue(10)
-    wrapper.find('select').simulate('select', "3")
-    expect(wrapper.find('select')).toHaveValue(3)
   })
 
   it('should render an h5 tag with the text "Dietary Restrictions"', () => {
@@ -38,6 +36,11 @@ describe('FilterBox', () => {
   })
 
   it('should render checkboxes with the labels balanced, Low Fat, and Peanut Free', () => {
-
+    expect(wrapper.find('input').at(0)).toHaveProp('type', 'checkbox')
+    expect(wrapper.find('label').at(0)).toHaveText('Balanced')
+    expect(wrapper.find('input').at(1)).toHaveProp('type', 'checkbox')
+    expect(wrapper.find('label').at(1)).toHaveText('Low Fat')
+    expect(wrapper.find('input').at(2)).toHaveProp('type', 'checkbox')
+    expect(wrapper.find('label').at(2)).toHaveText('Peanut Free')
   })
 })
