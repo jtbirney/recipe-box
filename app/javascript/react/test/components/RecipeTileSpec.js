@@ -16,6 +16,7 @@ describe('RecipeTile', () => {
     wrapper = mount(
       <RecipeTile
         recipe={recipe}
+        user={0}
       />
     )
   })
@@ -31,5 +32,14 @@ describe('RecipeTile', () => {
 
   it('should render an h4 tag with the recipe title', () => {
     expect(wrapper.find('h4')).toHaveText('Chicken Soup');
-  });
+  })
+
+  it('should not render an add icon', () => {
+    expect(wrapper.find('.fa')).not.toBePresent()
+  })
+
+  it('should render an add icon if the user is logged in', () => {
+    wrapper.setProps({ user: 1 });
+    expect(wrapper.find('.fa')).toBePresent()
+  })
 });

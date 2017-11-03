@@ -13,6 +13,7 @@ gem 'nokogiri'
 gem 'mechanize'
 gem 'pismo'
 gem 'bcrypt', '3.1.11'
+gem 'font-awesome-sass'
 
 group :development do
   gem 'listen', '~> 3.0.5'
@@ -23,12 +24,18 @@ end
 group :development, :test do
   gem 'dotenv-rails'
   gem 'capybara'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'launchy', require: false
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'faker'
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do

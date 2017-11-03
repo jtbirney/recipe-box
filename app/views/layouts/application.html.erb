@@ -9,12 +9,13 @@
     <%= stylesheet_link_tag "application" %>
     <%= javascript_pack_tag 'application' %>
     <%= csrf_meta_tags %>
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
   </head>
 
   <body>
 
     <%= yield %>
-
+    <div id="edamam-badge" data-color="dark"></div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

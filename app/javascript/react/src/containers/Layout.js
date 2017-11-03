@@ -7,16 +7,21 @@ class Layout extends Component {
     super(props)
     this.state = {
       username: "",
-      userId: 0
+      userId: 0,
+      loginField: false
     }
     this.logIn = this.logIn.bind(this)
     this.logOut = this.logOut.bind(this)
+    this.showLogin = this.showLogin.bind(this)
   }
 
-  logIn(username) {
+  logIn(username, userId) {
     this.setState({
-      username: username
+      username: username,
+      userId: userId,
+      loginField: false
     })
+    this.props.route.setUser(username, userId)
   }
 
   logOut(event) {
@@ -35,8 +40,15 @@ class Layout extends Component {
           username: "",
           userId: 0
         })
+        this.props.route.setUser("", 0)
+        this.props.router.push('/')
       })
     }
+
+  showLogin(event) {
+    event.preventDefault()
+    this.setState({ loginField: !this.state.loginField })
+  }
 
   componentDidMount() {
     fetch(`/api/v1/users`, {
@@ -63,24 +75,25 @@ class Layout extends Component {
       <div>
         <div className="top-bar">
           <div className="top-bar-left">
-            <Link to='/'><h3 className="menu-text">MenuBox</h3></Link>
+            <Link to='/'><h2 className="menu-text">MenuBox</h2></Link>
           </div>
           <div className="top-bar-right">
             {this.state.username === "" &&
               <div>
-                <a className="button" type="button" data-toggle="login">Sign In</a>
-                <SigninForm logIn={this.logIn} />
-                <Link className="button" to='/signup'>Sign Up</Link>
+                <a className="button large" id="show-sign-in" onClick={this.showLogin}>Sign In</a>
+                <Link className="button large" to='/signup'>Sign Up</Link>
               </div>
             }
+
             { this.state.username !== "" &&
               <div>
-                <a className="button" id="username">{this.state.username}</a>
-                <a className="button" onClick={this.logOut}>Log Out</a>
+                <a className="button large" id="username">{this.state.username}</a>
+                <a className="button large" onClick={this.logOut}>Log Out</a>
               </div>
             }
           </div>
         </div>
+        {this.state.loginField && <SigninForm logIn={this.logIn} /> }
         <div className="grid-container">
           {this.props.children}
         </div>

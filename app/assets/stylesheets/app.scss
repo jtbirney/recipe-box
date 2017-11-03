@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Raleway');
+
 body {
-  background-color: #FFF2E8;
+  background-image: url( asset_path('food-salad-healthy-vegetables-5.jpg') );
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #DDCFB3;
+  font-family: 'Raleway', sans-serif;
 }
 
 .top-bar {
@@ -7,8 +13,14 @@ body {
   background-color: #DDCFB3;
 }
 
-h1, h2, h3 {
+.vertical-spacer {
+  height: 2em;
+}
+
+h1, h2, h3, h4 {
   color: #335032;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
 }
 
 .button {
@@ -41,4 +53,24 @@ a:focus {
 
 .callout {
   border: none;
+}
+
+.fa {
+  color: #335032;
+}
+
+.background {
+  width: 100%;
+  filter: grayscale(100%);
+  position: relative;
+}
+
+#edamam-badge {
+  position: fixed;
+  bottom: 0.2em;
+  right: 0.2em;
+}
+
+#recipesearch {
+  height: 3.5em;
 }

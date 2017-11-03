@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import FormField from '../components/FormField'
 import { withRouter } from 'react-router'
+import FormField from '../components/FormField'
 
 class SigninForm extends Component {
   constructor(props) {
@@ -44,8 +44,7 @@ class SigninForm extends Component {
           console.log(response.message)
           this.setState({ errors: { login: response.message } })
         } else {
-          $('#login').foundation('close')
-          this.props.logIn(response.user.name)
+          this.props.logIn(response.user.name, response.user.id)
         }
       })
   }
@@ -58,31 +57,43 @@ class SigninForm extends Component {
       errorItems = Object.values(this.state.errors).map(error => {
         return(<p key={error}>{error}</p>)
       })
-      errorDiv = <div className="callout alert">{errorItems}</div>
+      errorDiv = <div className="callout alert text-center">{errorItems}</div>
     }
 
     return(
-      <span>
-        <form onSubmit={this.handleSubmit} className="dropdown-pane" id="login" data-dropdown data-auto-focus="true" data-close-on-click="true">
-          <h1>Sign In</h1>
+      <div className="grid-x callout">
+        <div className="small-12 medium-6 medium-offset-6 cell">
+          <form onSubmit={this.handleSubmit} id="login">
+            <div className="grid-x grid-margin-x">
+              <div className="shrink cell">
+                <h4>Sign In</h4>
+              </div>
+              <div className="auto cell">
+                <FormField
+                  type="text"
+                  name="name"
+                  label="Name"
+                  value={this.state.name}
+                  handleChange={this.handleChange}
+                />
+              </div>
+              <div className="auto cell">
+                <FormField
+                  type="password"
+                  name="password"
+                  label="Password"
+                  value={this.state.password}
+                  handleChange={this.handleChange}
+                />
+              </div>
+              <div className="shrink cell">
+                <input type="submit" className="button" value="Submit" id="sign-in-submit"/>
+              </div>
+            </div>
+          </form>
           {errorDiv}
-          <FormField
-            type="text"
-            name="name"
-            label="Name"
-            value={this.state.name}
-            handleChange={this.handleChange}
-          />
-          <FormField
-            type="password"
-            name="password"
-            label="Password"
-            value={this.state.password}
-            handleChange={this.handleChange}
-          />
-          <input type="submit" className="button" value="Submit" id="sign-in-submit"/>
-        </form>
-      </span>
+        </div>
+      </div>
     )
   }
 }
