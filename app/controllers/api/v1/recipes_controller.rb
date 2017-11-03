@@ -106,6 +106,8 @@ class Api::V1::RecipesController < ApplicationController
       current_user.recipes << recipe
     elsif !recipe
       recipe = Recipe.create(recipe_params)
+      recipe.title = recipe.get_title
+      recipe.ingredients = recipe.get_ingredients
       current_user.recipes << recipe
     end
     render json: { status: 'SUCCESS', message: 'Recipe Added', recipe: recipe }, status: :created
