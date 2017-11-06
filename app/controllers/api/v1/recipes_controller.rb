@@ -59,19 +59,38 @@ class Api::V1::RecipesController < ApplicationController
         recipe.image = recipe.get_image
       end
     end
+    recipe.save
     render json: { recipe: recipe }
   end
 
   def create
     recipe = Recipe.find_by(url: recipe_params[:url])
     if recipe && !current_user.recipes.include?(recipe)
+      if recipe.ingredients == nil
+        recipe.ingredients = recipe.get_ingredients
+      end
+      if recipe.directions == nil
+        recipe.directions = recipe.get_directions
+      end
+      if recipe.image == nil
+        recipe.image = recipe.get_image
+      end
+      recipe.save
       current_user.recipes << recipe
     elsif !recipe
       recipe = Recipe.new(recipe_params)
-      recipe.title = recipe.get_title
-      recipe.ingredients = recipe.get_ingredients
-      recipe.directions = recipe.get_directions
-      recipe.image = recipe.get_image
+      if recipe.title == nil
+        recipe.title = recipe.get_title
+      end
+      if recipe.ingredients == nil
+        recipe.ingredients = recipe.get_ingredients
+      end
+      if recipe.directions == nil
+        recipe.directions = recipe.get_directions
+      end
+      if recipe.image == nil
+        recipe.image = recipe.get_image
+      end
       recipe.save
       current_user.recipes << recipe
     end
