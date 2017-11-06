@@ -70,7 +70,6 @@ class IndexContainer extends Component {
   handleSearchClick(event) {
     event.preventDefault()
     let url = this.createUrl()
-    console.log(url)
     fetch(url, {
       credentials: 'same-origin',
       headers: {
@@ -80,7 +79,6 @@ class IndexContainer extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(body => {
-        console.log(body.recipes.length)
         if (body.recipes.length > 0) {
           this.setState({
             recipes: body.recipes,
@@ -97,7 +95,6 @@ class IndexContainer extends Component {
     event.preventDefault()
     let url = this.createUrl()
     url += `&from=${this.state.recipes.length}`
-    console.log(url)
     fetch(url, {
       credentials: 'same-origin',
       headers: {
@@ -122,7 +119,6 @@ class IndexContainer extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(response => {
-        console.log(response)
         if (response.user !== null) {
           this.setState({
             username: response.user,
@@ -149,7 +145,6 @@ class IndexContainer extends Component {
       body: formPayloadJSON
     }).then(response => response.json())
       .then(response => {
-        console.log(response)
       })
   }
 
@@ -162,12 +157,6 @@ class IndexContainer extends Component {
   }
 
   render() {
-    let searchClass
-    if (this.state.userId === 0) {
-      searchClass = "medium-12"
-    } else {
-      searchClass = "medium-6"
-    }
     let recipes = this.state.recipes.map(recipe => {
       let bookmark = () => this.saveRecipe(recipe);
       return(
@@ -183,16 +172,10 @@ class IndexContainer extends Component {
 
     return(
       <div>
-        <div className="vertical-spacer"></div>
         <div className="grid-x grid-margin-x">
-          <div className={`small-12 ${searchClass} cell text-center`}>
-            <a className="button large expanded" onClick={this.handleShowSearchClick}>Find New Recipes</a>
+          <div className="small-12 cell text-center">
+            <a className="button large expanded" id="search-button" onClick={this.handleShowSearchClick}>Find New Recipes</a>
           </div>
-          {this.state.userId !== 0 &&
-            <div className="small-12 medium-6 cell text-center">
-              <Link to={`/users/${this.state.userId}`} id="my-recipes" className="button large expanded">My Recipes</Link>
-            </div>
-          }
         </div>
         <div className="grid-x">
           {this.state.error !== '' &&

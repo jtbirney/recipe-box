@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router';
 import SigninForm from './SigninForm'
+import NavigationMenu from '../components/NavigationMenu'
 
 class Layout extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Layout extends Component {
     this.logIn = this.logIn.bind(this)
     this.logOut = this.logOut.bind(this)
     this.showLogin = this.showLogin.bind(this)
+    this.fetchCurrentUser = this.fetchCurrentUser.bind(this)
   }
 
   logIn(username, userId) {
@@ -35,7 +37,6 @@ class Layout extends Component {
       method: 'delete'
     }).then(response => response.json())
       .then(response => {
-        console.log(response)
         this.setState({
           username: "",
           userId: 0
@@ -50,7 +51,7 @@ class Layout extends Component {
     this.setState({ loginField: !this.state.loginField })
   }
 
-  componentDidMount() {
+  fetchCurrentUser() {
     fetch(`/api/v1/users`, {
       credentials: 'same-origin',
       headers: {
@@ -60,7 +61,6 @@ class Layout extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(response => {
-        console.log(response)
         if (response.user !== null) {
           this.setState({
             username: response.user,
@@ -70,30 +70,45 @@ class Layout extends Component {
       })
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.fetchCurrentUser()
+  }
+
+  componentDidMount() {
+    this.fetchCurrentUser()
+  }
+
   render() {
     return(
       <div>
-        <div className="top-bar">
+        <div className="top-bar expand cell">
           <div className="top-bar-left">
             <Link to='/'><h2 className="menu-text">MenuBox</h2></Link>
           </div>
           <div className="top-bar-right">
             {this.state.username === "" &&
-              <div>
+              <span>
                 <a className="button large" id="show-sign-in" onClick={this.showLogin}>Sign In</a>
                 <Link className="button large" to='/signup'>Sign Up</Link>
-              </div>
+              </span>
             }
 
             { this.state.username !== "" &&
-              <div>
+              <span>
                 <a className="button large" id="username">{this.state.username}</a>
-                <a className="button large" onClick={this.logOut}>Log Out</a>
-              </div>
+              </span>
             }
           </div>
         </div>
+        {this.state.username !== "" &&
+          <NavigationMenu
+            username={this.state.username}
+            userId={this.state.userId}
+            logOut={this.logOut}
+          />
+        }
         {this.state.loginField && <SigninForm logIn={this.logIn} /> }
+        <div className="vertical-spacer"></div>
         <div className="grid-container">
           {this.props.children}
         </div>

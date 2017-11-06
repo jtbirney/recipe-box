@@ -84,6 +84,7 @@ class SignupForm extends Component {
           })
           this.setState({ errors: errors })
         } else {
+          this.props.route.setUser(response.user.name, response.user.id)
           this.props.router.push('/')
         }
       })
@@ -101,7 +102,7 @@ class SignupForm extends Component {
     }
 
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="callout">
         <h1>Signup</h1>
         {errorDiv}
         <FormField

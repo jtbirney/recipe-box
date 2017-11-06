@@ -19,7 +19,7 @@ class SearchField extends Component {
     return(
       <form className="small-10 small-offset-1" onSubmit={this.props.handleSearchSubmit}>
         <div className="grid-x">
-          <input className="auto cell"
+          <input className="auto cell large-field"
             type="search"
             id="recipesearch"
             name="recipesearch"

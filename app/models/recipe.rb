@@ -45,7 +45,7 @@ class Recipe < ApplicationRecord
     else
       doc.traverse do |node|
         if node.children.length == 0 && node.parent.name != 'script'
-          if node.text =~ /((cook|bake).*\d minute|preheat|\d\d\d°F|(place|combine).*bowl)/i
+          if node.text =~ /((cook|bake).*\d minute|preheat|\d\d\d°F|(place|combine|mix).*bowl)|(bowl.*(place|combine|mix))/i
             directions = get_parent_text(node)
             break
           end
@@ -53,6 +53,27 @@ class Recipe < ApplicationRecord
       end
     end
     directions
+  end
+
+  def get_image
+    image_url = ""
+    result = HTTParty.get(url)
+    redirected_url = result.request.last_uri.to_s
+
+    begin
+      doc = Nokogiri::HTML(open(redirected_url))
+    rescue
+      image_url = "Could not get image from the url"
+    else
+      image_url = doc.at('meta[property="og:image"]')[:content]
+      if image_url.start_with?('//')
+        image_url = image_url[2..image_url.length]
+      end
+      if !image_url.start_with?("http://") && !image_url.start_with?("https://")
+        image_url = "http://" + image_url
+      end
+    end
+    image_url
   end
 
   def get_parent_text(node)
@@ -63,8 +84,7 @@ class Recipe < ApplicationRecord
     parent_array = []
     node.parent.children.each do |node|
       text = node.text
-      text.lstrip!
-      text.rstrip!
+      text.strip!
       numbered_list_regexp = /^\d*(.|)$/
       if !(text =~ numbered_list_regexp) && text.downcase != "advertisement"
         parent_array << node.text
@@ -82,8 +102,7 @@ class Recipe < ApplicationRecord
   def remove_whitespace(array)
     stripped_array = []
     array.each do |string|
-      string.lstrip!
-      string.rstrip!
+      string.strip!
       if string != ""
         stripped_array << string
       end
