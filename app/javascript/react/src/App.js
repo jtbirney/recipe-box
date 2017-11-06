@@ -4,6 +4,8 @@ import IndexContainer from './containers/IndexContainer'
 import Layout from './containers/Layout'
 import SignupForm from './containers/SignupForm'
 import UserShowContainer from './containers/UserShowContainer'
+import RecipeShowContainer from './containers/RecipeShowContainer'
+import RecipeAdd from './containers/RecipeAdd'
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +15,25 @@ class App extends Component {
       userId: 0
     }
     this.setUser = this.setUser.bind(this)
+  }
+
+  componentDidMount() {
+    fetch(`/api/v1/users`, {
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'get'
+    }).then(response => response.json())
+      .then(response => {
+        if (response.user !== null) {
+          this.setState({
+            username: response.user,
+            userId: response.user_id
+          })
+        }
+      })
   }
 
   setUser(username, userId) {
@@ -25,10 +46,12 @@ class App extends Component {
   render() {
     return(
       <Router history={browserHistory}>
-        <Route path='/' component={Layout} setUser={this.setUser}>
+        <Route path='/' component={Layout} user={this.state} setUser={this.setUser}>
           <IndexRoute component={IndexContainer} user={this.state}/>
-            <Route path='/signup' component={SignupForm}/>
+            <Route path='/signup' component={SignupForm} setUser={this.setUser}/>
             <Route path='/users/:id' component={UserShowContainer}/>
+            <Route path='/recipes/new' component={RecipeAdd} />
+            <Route path='/recipes/:id' component={RecipeShowContainer}/>
         </Route>
       </Router>
     )

@@ -30,7 +30,7 @@ class UserShowContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/recipes/${this.state.userId}`, {
+    fetch(`/api/v1/users/${this.state.userId}`, {
       credentials: 'same-origin',
       headers: {
         'Accept': 'application/json',
@@ -69,7 +69,6 @@ class UserShowContainer extends Component {
 
     return(
       <div className="grid-container">
-        <div className="vertical-spacer"></div>
         <div className="grid-x grid-margin-x">
           <div className="small-12 cell text-center">
             <h3>{this.state.error}</h3>

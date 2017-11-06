@@ -9,6 +9,14 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def show
+    if current_user && current_user.id == params[:id].to_i
+      render json: { recipes: current_user.recipes}
+    else
+      render json: { error: "Hmm... We can't find your recipes. Have you logged in?" }
+    end
+  end
+  
   def create
     user = User.new(user_params)
     if user.save

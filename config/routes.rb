@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :recipes, only: [:index]
+  resources :recipes, only: [:index, :show, :new]
   resources :users
   namespace :api do
     namespace :v1 do
       resources :recipes, only: [:index, :show, :create, :destroy]
-      resources :users, only: [:index, :create]
+      resources :users, only: [:index, :show, :create]
       resources :sessions, only: [:create, :destroy]
     end
   end
