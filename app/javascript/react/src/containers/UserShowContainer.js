@@ -30,7 +30,7 @@ class UserShowContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/recipes/${this.state.userId}`, {
+    fetch(`/api/v1/users/${this.state.userId}`, {
       credentials: 'same-origin',
       headers: {
         'Accept': 'application/json',

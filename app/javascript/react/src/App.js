@@ -4,6 +4,7 @@ import IndexContainer from './containers/IndexContainer'
 import Layout from './containers/Layout'
 import SignupForm from './containers/SignupForm'
 import UserShowContainer from './containers/UserShowContainer'
+import RecipeShowContainer from './containers/RecipeShowContainer'
 
 class App extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class App extends Component {
           <IndexRoute component={IndexContainer} user={this.state}/>
             <Route path='/signup' component={SignupForm}/>
             <Route path='/users/:id' component={UserShowContainer}/>
+            <Route path='/recipes/:id' component={RecipeShowContainer}/>
         </Route>
       </Router>
     )

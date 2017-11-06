@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router';
 
 const RecipeTile = props => {
   return(
@@ -11,14 +12,14 @@ const RecipeTile = props => {
           </div>
         </div>
       }
-      <a href={props.recipe.url} target="_blank">
+      <Link to={`/recipes/${props.recipe.id}`}>
         <div>
           <img src={props.recipe.image} alt={props.recipe.name}></img>
         </div>
         <div>
           <h4>{props.recipe.title}</h4>
         </div>
-      </a>
+      </Link>
     </div>
   )
 }

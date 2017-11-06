@@ -31,7 +31,14 @@ class Api::V1::RecipesController < ApplicationController
         url = hit["recipe"]["url"]
         title = hit["recipe"]["label"]
         image = hit["recipe"]["image"]
-        recipes.push({ url: url, title: title, image: image })
+        recipe = Recipe.find_by(url: url)
+        if !recipe
+          recipe = Recipe.create(url: url, title: title, image: image)
+          recipe.ingredients = recipe.get_ingredients
+          recipe.directions = recipe.get_directions
+          recipe.save
+        end
+        recipes << recipe
       end
     end
 
@@ -93,11 +100,8 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   def show
-    if current_user && current_user.id == params[:id].to_i
-      render json: { recipes: current_user.recipes}
-    else
-      render json: { error: "Hmm... We can't find your recipes. Have you logged in?" }
-    end
+    recipe = Recipe.find(params[:id])
+    render json: { recipe: recipe }
   end
 
   def create
@@ -108,6 +112,8 @@ class Api::V1::RecipesController < ApplicationController
       recipe = Recipe.create(recipe_params)
       recipe.title = recipe.get_title
       recipe.ingredients = recipe.get_ingredients
+      recipe.directions = recipe.get_directions
+      recipe.save
       current_user.recipes << recipe
     end
     render json: { status: 'SUCCESS', message: 'Recipe Added', recipe: recipe }, status: :created
