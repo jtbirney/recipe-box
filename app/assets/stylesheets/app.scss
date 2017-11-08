@@ -82,3 +82,15 @@ a:focus {
 #search-button {
   font-size: x-large;
 }
+
+.add-field {
+  color: grey;
+}
+
+.list-form {
+  margin-bottom: 0.1rem;
+}
+
+textarea.list-form {
+  height: fit-content;
+}

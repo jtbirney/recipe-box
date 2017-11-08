@@ -53,6 +53,19 @@ class Api::V1::RecipesController < ApplicationController
     render json: { status: 'SUCCESS', message: 'Recipe Added', recipe: recipe }, status: :created
   end
 
+  def update
+    recipe = Recipe.find(params[:id])
+    if params[:ingredients]
+      recipe.update_attributes(ingredients: params[:ingredients])
+      recipe.ingredients.delete("")
+    elsif params[:directions]
+      recipe.update_attributes(directions: params[:directions])
+      recipe.directions.delete("")
+    end
+    recipe.save
+    render json: recipe
+  end
+
   def destroy
     recipe = Recipe.find(params[:id])
     current_user.recipes.delete(recipe)
@@ -84,7 +97,7 @@ class Api::V1::RecipesController < ApplicationController
     response = HTTParty.get(url)
     hits = response.parsed_response["hits"]
     recipes = []
-
+    
     if hits.count > 0
       hits.each do |hit|
         url = hit["recipe"]["url"]
@@ -107,6 +120,6 @@ class Api::V1::RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:title, :url, :image)
+    params.require(:recipe).permit(:title, :url, :image, :ingredients, :directions)
   end
 end

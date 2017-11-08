@@ -52,7 +52,7 @@ class App extends Component {
           <Route path='/signup' component={SignupForm} setUser={this.setUser}/>
           <Route path='/users/:id' component={UserShowContainer}/>
           <Route path='/recipes/new' component={RecipeAdd} />
-          <Route path='/recipes/:id' component={RecipeShowContainer}/>
+          <Route path='/recipes/:id' component={RecipeShowContainer} />
           <Route path='/menu' component={MenuShowContainer} user={this.state.userId}/>
         </Route>
       </Router>

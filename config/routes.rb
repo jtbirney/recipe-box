@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users
   namespace :api do
     namespace :v1 do
-      resources :recipes, only: [:show, :create, :destroy]
+      resources :recipes, only: [:show, :create, :update, :destroy]
       resources :users, only: [:index, :show, :create] do
         resources :recipes, only: [:index]
       end
