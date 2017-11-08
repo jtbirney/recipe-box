@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import NoteContainer from './NoteContainer'
 
 class RecipeShowContainer extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class RecipeShowContainer extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(body => {
-        this.setState({ recipe: body.recipe })
+        this.setState({ recipe: body })
       })
   }
 
@@ -40,19 +41,27 @@ class RecipeShowContainer extends Component {
     return(
       <div className="callout">
         <div className="grid-x grid-margin-x">
-          <div className="small-12 medium-6 cell">
+          <div className="small-12 cell">
             <h1>{this.state.recipe.title}</h1>
-            <a href={this.state.recipe.url} target="_blank">View Original</a>
-            <h3>Ingredients</h3>
-            {ingredients}
           </div>
           <div className="small-12 medium-6 cell text-center">
             <img src={this.state.recipe.image} alt={this.state.recipe.title} />
+            <br/>
+            <a href={this.state.recipe.url} target="_blank">View Original</a>
+          </div>
+          <div className="small-12 medium-6 cell">
+            <h3>Ingredients</h3>
+            {ingredients}
           </div>
           <div className="small-12 cell">
             <h3>Directions</h3>
             {directions}
           </div>
+          {this.state.recipe.note &&
+            <NoteContainer
+              note={this.state.recipe.note}
+            />
+          }
         </div>
       </div>
     )
