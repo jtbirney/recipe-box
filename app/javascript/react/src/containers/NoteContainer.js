@@ -24,7 +24,7 @@ class NoteContainer extends Component {
 
   saveNote(event) {
     event.preventDefault()
-    let formPayload = { note: this.state.noteText }
+    let formPayload = { user_recipe: { note: this.state.noteText } }
     let formPayloadJSON = JSON.stringify(formPayload)
     fetch(`/api/v1/user_recipes/${this.props.note.note_id}`, {
       credentials: 'same-origin',
