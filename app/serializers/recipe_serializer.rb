@@ -1,5 +1,5 @@
 class RecipeSerializer < ActiveModel::Serializer
-  attributes :id, :title, :url, :image, :ingredients, :directions, :saved, :menu, :note
+  attributes :id, :title, :url, :image, :ingredients, :directions, :saved, :menu, :note, :editable
 
   def saved
     if current_user
@@ -29,5 +29,12 @@ class RecipeSerializer < ActiveModel::Serializer
     else
       return nil
     end
+  end
+
+  def editable
+    if current_user
+      return true
+    end
+    false
   end
 end

@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import ListContainer from './ListContainer'
 import NoteContainer from './NoteContainer'
 
 class RecipeShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      recipe: {}
+      recipe: {},
+      ingredientsForm: false
     }
   }
 
@@ -19,7 +21,9 @@ class RecipeShowContainer extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(body => {
-        this.setState({ recipe: body })
+        this.setState({
+          recipe: body
+        })
       })
   }
 
@@ -49,14 +53,28 @@ class RecipeShowContainer extends Component {
             <br/>
             <a href={this.state.recipe.url} target="_blank">View Original</a>
           </div>
-          <div className="small-12 medium-6 cell">
-            <h3>Ingredients</h3>
-            {ingredients}
-          </div>
-          <div className="small-12 cell">
-            <h3>Directions</h3>
-            {directions}
-          </div>
+          {this.state.recipe.ingredients &&
+            <div className="small-12 medium-6 cell">
+              <ListContainer
+                recipeId={this.state.recipe.id}
+                list={this.state.recipe.ingredients}
+                type="ingredients"
+                heading="Ingredients"
+                editable={this.state.recipe.editable}
+              />
+            </div>
+          }
+          {this.state.recipe.directions &&
+            <div className="small-12 cell">
+              <ListContainer
+                recipeId={this.state.recipe.id}
+                list={this.state.recipe.directions}
+                type="directions"
+                heading="Directions"
+                editable={this.state.recipe.editable}
+              />
+            </div>
+          }
           {this.state.recipe.note &&
             <NoteContainer
               note={this.state.recipe.note}
