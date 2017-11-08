@@ -7,7 +7,7 @@ class Layout extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: "",
+      username: null,
       userId: 0,
       loginField: false
     }
@@ -38,10 +38,10 @@ class Layout extends Component {
     }).then(response => response.json())
       .then(response => {
         this.setState({
-          username: "",
+          username: null,
           userId: 0
         })
-        this.props.route.setUser("", 0)
+        this.props.route.setUser(null, 0)
         this.props.router.push('/')
       })
     }
@@ -61,20 +61,21 @@ class Layout extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(response => {
-        if (response.user !== null) {
+        if (response.name) {
           this.setState({
-            username: response.user,
-            userId: response.user_id
+            username: response.name,
+            userId: response.id
+          })
+        } else {
+          this.setState({
+            username: null,
+            userId: 0
           })
         }
       })
   }
 
   componentWillReceiveProps(nextProps) {
-    this.fetchCurrentUser()
-  }
-
-  componentDidMount() {
     this.fetchCurrentUser()
   }
 
@@ -86,21 +87,21 @@ class Layout extends Component {
             <Link to='/'><h2 className="menu-text">MenuBox</h2></Link>
           </div>
           <div className="top-bar-right">
-            {this.state.username === "" &&
+            {this.state.username === null &&
               <span>
                 <a className="button large" id="show-sign-in" onClick={this.showLogin}>Sign In</a>
                 <Link className="button large" to='/signup'>Sign Up</Link>
               </span>
             }
 
-            { this.state.username !== "" &&
+            {this.state.username !== null &&
               <span>
                 <a className="button large" id="username">{this.state.username}</a>
               </span>
             }
           </div>
         </div>
-        {this.state.username !== "" &&
+        {this.state.username !== null &&
           <NavigationMenu
             username={this.state.username}
             userId={this.state.userId}

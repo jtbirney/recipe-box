@@ -6,14 +6,19 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  get '/menu', to: 'recipes#index'
+  get '/api/v1/search', to: 'api/v1/recipes#search'
 
   resources :recipes, only: [:index, :show, :new]
   resources :users
   namespace :api do
     namespace :v1 do
-      resources :recipes, only: [:index, :show, :create, :destroy]
-      resources :users, only: [:index, :show, :create]
+      resources :recipes, only: [:show, :create, :destroy]
+      resources :users, only: [:index, :show, :create] do
+        resources :recipes, only: [:index]
+      end
       resources :sessions, only: [:create, :destroy]
+      resources :menu_items, only: [:index, :create, :destroy]
     end
   end
 end

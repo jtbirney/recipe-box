@@ -1,37 +1,30 @@
 import React, { Component } from 'react'
 import RecipeTileContainer from './RecipeTileContainer'
 
-class UserShowContainer extends Component {
+class MenuShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      error: "",
-      recipes: [],
-      userId: parseInt(this.props.params.id)
+      username: "",
+      userId: 0,
+      recipes: []
     }
     this.updateRecipes = this.updateRecipes.bind(this)
   }
 
   updateRecipes(updatedRecipe, method) {
-    let newRecipes = this.state.recipes
-    let index
-    newRecipes.forEach(recipe => {
-      if (recipe.id === updatedRecipe.id) {
-        index = newRecipes.indexOf(recipe)
-      }
-    })
-    if (method === "addMenu" || method === "removeMenu") {
-      newRecipes[index].menu = !newRecipes[index].menu
-    } else if (method === "removeRecipes") {
+    let newRecipes
+    if (method === "removeMenu" || method === "removeRecipes") {
       newRecipes = this.state.recipes.filter(recipe => {
         return recipe.id !== updatedRecipe.id
       })
     }
+    console.log(newRecipes)
     this.setState({ recipes: newRecipes })
   }
 
-  componentDidMount() {
-    fetch(`/api/v1/users/${this.state.userId}/recipes`, {
+  fetchCurrentUser() {
+    fetch(`/api/v1/users`, {
       credentials: 'same-origin',
       headers: {
         'Accept': 'application/json',
@@ -39,23 +32,43 @@ class UserShowContainer extends Component {
       },
       method: 'get'
     }).then(response => response.json())
-      .then(body => {
-        this.setState({
-          error: body.error,
-          recipes: body
-        })
+      .then(response => {
+        if (response.name) {
+          this.setState({
+            username: response.name,
+            userId: response.id
+          })
+        } else {
+          this.setState({
+            username: "",
+            userId: 0
+          })
+        }
       })
-      .catch(error => {
-        this.setState({ error: "We can't find your page. Have you logged in?"})
+  }
+
+  componentDidMount() {
+    this.fetchCurrentUser()
+    fetch(`/api/v1/menu_items`, {
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'get'
+    }).then(response => response.json())
+      .then(response => {
+        this.setState({ recipes: response })
       })
-    }
+  }
 
   render() {
+    console.log(this.state.recipes)
     return(
       <div className="grid-container">
         <div className="grid-x">
           <div className="callout small-12 cell text-center">
-            <h1>My Recipes</h1>
+            <h1>My Menu</h1>
           </div>
         </div>
         <RecipeTileContainer
@@ -68,4 +81,4 @@ class UserShowContainer extends Component {
   }
 }
 
-export default UserShowContainer
+export default MenuShowContainer

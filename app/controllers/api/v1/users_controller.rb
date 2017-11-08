@@ -3,20 +3,12 @@ class Api::V1::UsersController < ApplicationController
 
   def index
     if logged_in?
-      render json: { user: current_user.name, user_id: current_user.id }
+      render json: User.find(current_user.id)
     else
       render json: { user: nil }
     end
   end
 
-  def show
-    if current_user && current_user.id == params[:id].to_i
-      render json: { recipes: current_user.recipes}
-    else
-      render json: { error: "Hmm... We can't find your recipes. Have you logged in?" }
-    end
-  end
-  
   def create
     user = User.new(user_params)
     if user.save

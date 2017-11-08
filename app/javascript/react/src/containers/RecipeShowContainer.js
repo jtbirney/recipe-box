@@ -18,7 +18,6 @@ class RecipeShowContainer extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(body => {
-        console.log(body)
         this.setState({ recipe: body.recipe })
       })
   }

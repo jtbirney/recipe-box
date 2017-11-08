@@ -30,7 +30,6 @@ class RecipeAdd extends Component {
       body: formPayloadJSON
     }).then(response => response.json())
       .then(response => {
-        console.log(response)
         this.props.router.push(`/recipes/${response.recipe.id}`)
       })
     }

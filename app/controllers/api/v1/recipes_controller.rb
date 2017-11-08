@@ -2,6 +2,65 @@ class Api::V1::RecipesController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
+    if current_user && current_user.id == params[:user_id].to_i
+      render json: current_user.recipes
+    else
+      render json: { error: "Hmm... We can't find your recipes. Have you logged in?" }
+    end
+  end
+
+  def show
+    recipe = Recipe.find(params[:id])
+    if recipe.url
+      if recipe.ingredients == nil
+        recipe.ingredients = recipe.get_ingredients
+      end
+      if recipe.directions == nil
+        recipe.directions = recipe.get_directions
+      end
+      if recipe.image == nil
+        recipe.image = recipe.get_image
+      end
+    end
+    recipe.save
+    render json: { recipe: recipe }
+  end
+
+  def create
+    recipe = Recipe.find_by(url: recipe_params[:url])
+
+    if recipe && !current_user.recipes.include?(recipe)
+      current_user.recipes << recipe
+    elsif !recipe
+      recipe = Recipe.new(recipe_params)
+      if recipe.title == nil
+        recipe.title = recipe.get_title
+      end
+      current_user.recipes << recipe
+    end
+
+    if recipe.ingredients == nil
+      recipe.ingredients = recipe.get_ingredients
+    end
+    if recipe.directions == nil
+      recipe.directions = recipe.get_directions
+    end
+    if recipe.image == nil
+      recipe.image = recipe.get_image
+    end
+    recipe.save
+
+    render json: { status: 'SUCCESS', message: 'Recipe Added', recipe: recipe }, status: :created
+  end
+
+  def destroy
+    recipe = Recipe.find(params[:id])
+    current_user.recipes.delete(recipe)
+    current_user.menu.delete(recipe)
+    render json: { status: 'SUCCESS', message: 'Recipe Removed', recipe: recipe }, status: :ok
+  end
+
+  def search
     url = "https://api.edamam.com/search?q=#{params[:query]}&app_id=#{ENV["RECIPES_APP_ID"]}&app_key=#{ENV["RECIPES_API_KEY"]}"
     params.each do |key, value|
       key_snake = key.underscore
@@ -43,64 +102,7 @@ class Api::V1::RecipesController < ApplicationController
     # Test data to avoid making repeated API calls
     # recipes = Recipe.all
 
-    render json: { recipes: recipes }
-  end
-
-  def show
-    recipe = Recipe.find(params[:id])
-    if recipe.url
-      if recipe.ingredients == nil
-        recipe.ingredients = recipe.get_ingredients
-      end
-      if recipe.directions == nil
-        recipe.directions = recipe.get_directions
-      end
-      if recipe.image == nil
-        recipe.image = recipe.get_image
-      end
-    end
-    recipe.save
-    render json: { recipe: recipe }
-  end
-
-  def create
-    recipe = Recipe.find_by(url: recipe_params[:url])
-    if recipe && !current_user.recipes.include?(recipe)
-      if recipe.ingredients == nil
-        recipe.ingredients = recipe.get_ingredients
-      end
-      if recipe.directions == nil
-        recipe.directions = recipe.get_directions
-      end
-      if recipe.image == nil
-        recipe.image = recipe.get_image
-      end
-      recipe.save
-      current_user.recipes << recipe
-    elsif !recipe
-      recipe = Recipe.new(recipe_params)
-      if recipe.title == nil
-        recipe.title = recipe.get_title
-      end
-      if recipe.ingredients == nil
-        recipe.ingredients = recipe.get_ingredients
-      end
-      if recipe.directions == nil
-        recipe.directions = recipe.get_directions
-      end
-      if recipe.image == nil
-        recipe.image = recipe.get_image
-      end
-      recipe.save
-      current_user.recipes << recipe
-    end
-    render json: { status: 'SUCCESS', message: 'Recipe Added', recipe: recipe }, status: :created
-  end
-
-  def destroy
-    recipe = Recipe.find(params[:id])
-    current_user.recipes.delete(recipe)
-    render json: { status: 'SUCCESS', message: 'Recipe Removed', recipe: recipe }, status: :ok
+    render json: recipes
   end
 
   private

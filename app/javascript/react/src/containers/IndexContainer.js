@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router';
-import RecipeTile from '../components/RecipeTile'
 import SearchField from './SearchField'
+import RecipeTileContainer from './RecipeTileContainer'
 
 class IndexContainer extends Component {
   constructor(props) {
@@ -27,13 +27,32 @@ class IndexContainer extends Component {
       userId: 0,
       search: false
     }
+    this.updateRecipes = this.updateRecipes.bind(this)
     this.handleShowSearchClick = this.handleShowSearchClick.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.createUrl = this.createUrl.bind(this)
     this.handleSearchClick = this.handleSearchClick.bind(this)
     this.showMore = this.showMore.bind(this)
     this.fetchCurrentUser = this.fetchCurrentUser.bind(this)
-    this.saveRecipe = this.saveRecipe.bind(this)
+  }
+
+  updateRecipes(updatedRecipe, method) {
+    let newRecipes = this.state.recipes
+    let index
+    newRecipes.forEach(recipe => {
+      if (recipe.id === updatedRecipe.id) {
+        index = newRecipes.indexOf(recipe)
+      }
+    })
+    if(method === "addRecipes" || method === "removeRecipes") {
+      newRecipes[index].saved = !newRecipes[index].saved
+    } else if (method === "addMenu") {
+      newRecipes[index].saved = true
+      newRecipes[index].menu = true
+    } else if (method === "removeMenu") {
+      newRecipes[index].menu = false
+    }
+    this.setState({ recipes: newRecipes })
   }
 
   handleShowSearchClick(event) {
@@ -55,7 +74,7 @@ class IndexContainer extends Component {
   }
 
   createUrl() {
-    let url = `/api/v1/recipes/?query=${this.state.searchQuery.recipesearch}`
+    let url = `/api/v1/search/?query=${this.state.searchQuery.recipesearch}`
     let query = this.state.searchQuery
     for (var key in query) {
       if (key !== "recipesearch") {
@@ -79,9 +98,9 @@ class IndexContainer extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(body => {
-        if (body.recipes.length > 0) {
+        if (body.length > 0) {
           this.setState({
-            recipes: body.recipes,
+            recipes: body,
             search: false,
             error: ''
           })
@@ -119,10 +138,10 @@ class IndexContainer extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(response => {
-        if (response.user !== null) {
+        if (response.name) {
           this.setState({
-            username: response.user,
-            userId: response.user_id
+            username: response.name,
+            userId: response.id
           })
         } else {
           this.setState({
@@ -130,21 +149,6 @@ class IndexContainer extends Component {
             userId: 0
           })
         }
-      })
-  }
-
-  saveRecipe(recipe) {
-    let formPayloadJSON = JSON.stringify(recipe)
-    fetch('/api/v1/recipes', {
-      credentials: 'same-origin',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: formPayloadJSON
-    }).then(response => response.json())
-      .then(response => {
       })
   }
 
@@ -157,19 +161,6 @@ class IndexContainer extends Component {
   }
 
   render() {
-    let recipes = this.state.recipes.map(recipe => {
-      let bookmark = () => this.saveRecipe(recipe);
-      return(
-        <RecipeTile
-          key={recipe.url}
-          recipe={recipe}
-          user={this.state.userId}
-          bookmark={bookmark}
-          icon="fa-plus-circle"
-        />
-      )
-    })
-
     return(
       <div>
         <div className="grid-x grid-margin-x">
@@ -195,7 +186,11 @@ class IndexContainer extends Component {
           }
         </div>
         <div className="grid-x grid-margin-x">
-          {recipes}
+          <RecipeTileContainer
+            userId={this.state.userId}
+            recipes={this.state.recipes}
+            updateRecipes={this.updateRecipes}
+          />
           {this.state.recipes.length > 0 &&
             <div className="small-6 medium-4 cell text-center">
               <a className="button large" id="show-more" onClick={this.showMore}>More</a>

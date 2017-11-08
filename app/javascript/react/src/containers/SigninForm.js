@@ -39,9 +39,7 @@ class SigninForm extends Component {
       body: formPayloadJSON
     }).then(response => response.json())
       .then(response => {
-        console.log(response)
         if (response.status === "FAILURE") {
-          console.log(response.message)
           this.setState({ errors: { login: response.message } })
         } else {
           this.props.logIn(response.user.name, response.user.id)
