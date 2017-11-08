@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       end
       resources :sessions, only: [:create, :destroy]
       resources :menu_items, only: [:index, :create, :destroy]
+      resources :user_recipes, only: [:update]
     end
   end
 end

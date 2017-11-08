@@ -23,7 +23,7 @@ class Api::V1::RecipesController < ApplicationController
       end
     end
     recipe.save
-    render json: { recipe: recipe }
+    render json: recipe
   end
 
   def create
