@@ -10,10 +10,10 @@ gem 'foundation-rails', '~> 6.4.1.2'
 gem 'jquery-rails'
 gem 'httparty'
 gem 'nokogiri'
-gem 'mechanize'
 gem 'pismo'
 gem 'bcrypt', '3.1.11'
 gem 'font-awesome-sass'
+gem 'active_model_serializers'
 
 group :development do
   gem 'listen', '~> 3.0.5'

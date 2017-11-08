@@ -6,12 +6,13 @@ import SignupForm from './containers/SignupForm'
 import UserShowContainer from './containers/UserShowContainer'
 import RecipeShowContainer from './containers/RecipeShowContainer'
 import RecipeAdd from './containers/RecipeAdd'
+import MenuShowContainer from './containers/MenuShowContainer'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: "",
+      username: null,
       userId: 0
     }
     this.setUser = this.setUser.bind(this)
@@ -27,10 +28,10 @@ class App extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(response => {
-        if (response.user !== null) {
+        if (response.name) {
           this.setState({
-            username: response.user,
-            userId: response.user_id
+            username: response.name,
+            userId: response.id
           })
         }
       })
@@ -47,11 +48,12 @@ class App extends Component {
     return(
       <Router history={browserHistory}>
         <Route path='/' component={Layout} user={this.state} setUser={this.setUser}>
-          <IndexRoute component={IndexContainer} user={this.state}/>
-            <Route path='/signup' component={SignupForm} setUser={this.setUser}/>
-            <Route path='/users/:id' component={UserShowContainer}/>
-            <Route path='/recipes/new' component={RecipeAdd} />
-            <Route path='/recipes/:id' component={RecipeShowContainer}/>
+          <IndexRoute component={IndexContainer} user={this.state.userId}/>
+          <Route path='/signup' component={SignupForm} setUser={this.setUser}/>
+          <Route path='/users/:id' component={UserShowContainer}/>
+          <Route path='/recipes/new' component={RecipeAdd} />
+          <Route path='/recipes/:id' component={RecipeShowContainer}/>
+          <Route path='/menu' component={MenuShowContainer} user={this.state.userId}/>
         </Route>
       </Router>
     )

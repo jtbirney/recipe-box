@@ -4,6 +4,10 @@ class Recipe < ApplicationRecord
   has_many :user_recipes
   has_many :users, through: :user_recipes
 
+  has_many :menu_items
+  has_many :menu_users, through: :menu_items, source: :user
+
+
   def get_title
     doc = Nokogiri::HTML(open(url))
     title = doc.title
