@@ -14,7 +14,7 @@ class Api::V1::MenuItemsController < ApplicationController
     if !current_user.menu.include?(recipe)
       current_user.menu << recipe
     end
-    render json: { status: 'SUCCESS', message: 'Recipe Added to Menu', recipe: recipe }, status: :created
+    render json: recipe
   end
 
   def destroy

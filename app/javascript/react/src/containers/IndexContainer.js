@@ -44,8 +44,11 @@ class IndexContainer extends Component {
         index = newRecipes.indexOf(recipe)
       }
     })
-    if(method === "addRecipes" || method === "removeRecipes") {
-      newRecipes[index].saved = !newRecipes[index].saved
+    if(method === "addRecipes") {
+      newRecipes[index].saved = true
+    } else if (method === "removeRecipes") {
+      newRecipes[index].saved = false
+      newRecipes[index].menu = false
     } else if (method === "addMenu") {
       newRecipes[index].saved = true
       newRecipes[index].menu = true
@@ -197,6 +200,7 @@ class IndexContainer extends Component {
             </div>
           }
         </div>
+        <div id="edamam-badge" data-color="dark"></div>
       </div>
     )
   }

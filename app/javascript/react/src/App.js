@@ -53,7 +53,7 @@ class App extends Component {
           <Route path='/users/:id' component={UserShowContainer}/>
           <Route path='/recipes/new' component={RecipeAdd} />
           <Route path='/recipes/:id' component={RecipeShowContainer} />
-          <Route path='/menu' component={MenuShowContainer} user={this.state.userId}/>
+          <Route path='/menu' component={MenuShowContainer} user={this.state.userId} />
         </Route>
       </Router>
     )

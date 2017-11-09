@@ -23,8 +23,8 @@ class RecipeTileContainer extends Component {
       body: formPayloadJSON
     }).then(response => response.json())
       .then(response => {
-        console.log(response.recipe)
-        this.props.updateRecipes(response.recipe, "addMenu")
+        console.log(response);
+        this.props.updateRecipes(response, "addMenu")
       })
   }
 
@@ -40,7 +40,7 @@ class RecipeTileContainer extends Component {
         body: formPayloadJSON
       }).then(response => response.json())
         .then(response => {
-          this.props.updateRecipes(response.recipe, "addRecipes")
+          this.props.updateRecipes(response, "addRecipes")
         })
   }
 
