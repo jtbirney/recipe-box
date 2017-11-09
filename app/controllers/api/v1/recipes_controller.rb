@@ -50,7 +50,7 @@ class Api::V1::RecipesController < ApplicationController
     end
     recipe.save
 
-    render json: { status: 'SUCCESS', message: 'Recipe Added', recipe: recipe }, status: :created
+    render json: recipe
   end
 
   def update
@@ -97,7 +97,7 @@ class Api::V1::RecipesController < ApplicationController
     response = HTTParty.get(url)
     hits = response.parsed_response["hits"]
     recipes = []
-    
+
     if hits.count > 0
       hits.each do |hit|
         url = hit["recipe"]["url"]

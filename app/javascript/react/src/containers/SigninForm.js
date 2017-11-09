@@ -60,13 +60,13 @@ class SigninForm extends Component {
 
     return(
       <div className="grid-x callout">
-        <div className="small-12 medium-6 medium-offset-6 cell">
+        <div className="small-12 large-6 large-offset-6 cell">
           <form onSubmit={this.handleSubmit} id="login">
             <div className="grid-x grid-margin-x">
-              <div className="shrink cell">
+              <div className="small-12 medium-shrink cell">
                 <h4>Sign In</h4>
               </div>
-              <div className="auto cell">
+              <div className="small-12 medium-auto cell">
                 <FormField
                   type="text"
                   name="name"
@@ -75,7 +75,7 @@ class SigninForm extends Component {
                   handleChange={this.handleChange}
                 />
               </div>
-              <div className="auto cell">
+              <div className="small-12 medium-auto cell">
                 <FormField
                   type="password"
                   name="password"
@@ -84,12 +84,13 @@ class SigninForm extends Component {
                   handleChange={this.handleChange}
                 />
               </div>
-              <div className="shrink cell">
+              <div className="small-12 medium-shrink cell">
                 <input type="submit" className="button" value="Submit" id="sign-in-submit"/>
               </div>
             </div>
           </form>
           {errorDiv}
+          <p className="text-center">Example Login - Username: "testuser" Password: "pass"</p>
         </div>
       </div>
     )

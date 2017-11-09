@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Raleway|Merriweather');;
 
 body {
   background-image: url( asset_path('food-salad-healthy-vegetables-5.jpg') );
@@ -19,8 +19,7 @@ body {
 
 h1, h2, h3, h4 {
   color: #335032;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
+  font-family: 'Merriweather', serif;
 }
 
 .button {
@@ -53,6 +52,7 @@ a:focus {
 
 .callout {
   border: none;
+  opacity: 0.9;
 }
 
 .fa-plus {
@@ -77,6 +77,7 @@ a:focus {
 
 .navigation-menu {
   background-color: #f5f0e8;
+  opacity: 0.9;
 }
 
 #search-button {
@@ -93,4 +94,22 @@ a:focus {
 
 textarea.list-form {
   height: fit-content;
+}
+
+.tile-image-div {
+  height: 12em;
+  overflow: hidden;
+}
+
+.tile-image-div img {
+  width: 100%;
+}
+
+.recipe-show-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.recipe-source {
+  padding: .5em;
 }
