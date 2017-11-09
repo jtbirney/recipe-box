@@ -126,7 +126,7 @@ class IndexContainer extends Component {
       method: 'get'
     }).then(response => response.json())
       .then(body => {
-        let newRecipes = this.state.recipes.concat(body.recipes)
+        let newRecipes = this.state.recipes.concat(body)
         this.setState({ recipes: newRecipes })
       })
   }
@@ -188,18 +188,18 @@ class IndexContainer extends Component {
             />
           }
         </div>
-        <div className="grid-x grid-margin-x">
           <RecipeTileContainer
             userId={this.state.userId}
             recipes={this.state.recipes}
             updateRecipes={this.updateRecipes}
           />
           {this.state.recipes.length > 0 &&
-            <div className="small-6 medium-4 cell text-center">
-              <a className="button large" id="show-more" onClick={this.showMore}>More</a>
+          <div className="grid-x grid-margin-x">
+            <div className="small-6 small-offset-3 medium-4 medium-offset-4 cell text-center">
+              <a className="button large expanded" id="show-more" onClick={this.showMore}>Show More</a>
             </div>
+          </div>
           }
-        </div>
         <div id="edamam-badge" data-color="dark"></div>
       </div>
     )
