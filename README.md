@@ -33,4 +33,5 @@ RECIPES_API_KEY=<YOUR_API_KEY_HERE>
 
 ## Test suite
 Ruby testing using RSpec. Run with `$ rake`
+
 React testing using Karma/Jasmine/Enzyme. Run with `$ karma start`
