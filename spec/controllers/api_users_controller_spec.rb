@@ -17,8 +17,8 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq "application/json"
       returned_json = JSON.parse(response.body)
-      expect(returned_json["user"]).to eq user.name
-      expect(returned_json["user_id"]).to eq user.id
+      expect(returned_json["name"]).to eq user.name
+      expect(returned_json["id"]).to eq user.id
     end
   end
 
