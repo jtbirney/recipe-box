@@ -103,9 +103,10 @@ class Api::V1::RecipesController < ApplicationController
         url = hit["recipe"]["url"]
         title = hit["recipe"]["label"]
         image = hit["recipe"]["image"]
+        ingredients = hit["recipe"]["ingredientLines"]
         recipe = Recipe.find_by(url: url)
         if !recipe
-          recipe = Recipe.create(url: url, title: title, image: image)
+          recipe = Recipe.new(url: url, title: title, image: image, ingredients: ingredients)
           recipe.save
         end
         recipes << recipe
