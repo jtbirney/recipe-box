@@ -1,0 +1,970 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jakubowski.org/verona
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Nov 2017 18:59:59 GMT
+      Content-Type:
+      - text/html
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      X-Dis-Request-Id:
+      - 8de9271bbd50564b0c741d890ed2d977
+      P3p:
+      - CP="NON DSP COR ADMa OUR IND UNI COM NAV INT"
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n<meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n<meta
+        http-equiv=\"Content-Script-Type\" content=\"text/javascript\">\n<script type=\"text/javascript\">\nfunction
+        getCookie(c_name) { // Local function for getting a cookie value\n    if (document.cookie.length
+        > 0) {\n        c_start = document.cookie.indexOf(c_name + \"=\");\n        if
+        (c_start!=-1) {\n        c_start=c_start + c_name.length + 1;\n        c_end=document.cookie.indexOf(\";\",
+        c_start);\n\n        if (c_end==-1) \n            c_end = document.cookie.length;\n\n
+        \       return unescape(document.cookie.substring(c_start,c_end));\n        }\n
+        \   }\n    return \"\";\n}\nfunction setCookie(c_name, value, expiredays)
+        { // Local function for setting a value of a cookie\n    var exdate = new
+        Date();\n    exdate.setDate(exdate.getDate()+expiredays);\n    document.cookie
+        = c_name + \"=\" + escape(value) + ((expiredays==null) ? \"\" : \";expires=\"
+        + exdate.toGMTString()) + \";path=/\";\n}\nfunction getHostUri() {\n    var
+        loc = document.location;\n    return loc.toString();\n}\nsetCookie('YPF8827340282Jdskjhfiw_928937459182JAX666',
+        '75.69.230.57', 10);\ntry {  \n    location.reload(true);  \n} catch (err1)
+        {  \n    try {  \n        location.reload();  \n    } catch (err2) {  \n    \tlocation.href
+        = getHostUri();  \n    }  \n}\n</script>\n</head>\n<body>\n<noscript>This
+        site requires JavaScript and Cookies to be enabled. Please change your browser
+        settings or upgrade your browser.</noscript>\n</body>\n</html>\n"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 18:59:59 GMT
+- request:
+    method: get
+    uri: http://jakubowski.org/verona
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Nov 2017 18:59:59 GMT
+      Content-Type:
+      - text/html
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      X-Dis-Request-Id:
+      - 513f595fe401849786f3c725675d2b1e
+      P3p:
+      - CP="NON DSP COR ADMa OUR IND UNI COM NAV INT"
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n<meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n<meta
+        http-equiv=\"Content-Script-Type\" content=\"text/javascript\">\n<script type=\"text/javascript\">\nfunction
+        getCookie(c_name) { // Local function for getting a cookie value\n    if (document.cookie.length
+        > 0) {\n        c_start = document.cookie.indexOf(c_name + \"=\");\n        if
+        (c_start!=-1) {\n        c_start=c_start + c_name.length + 1;\n        c_end=document.cookie.indexOf(\";\",
+        c_start);\n\n        if (c_end==-1) \n            c_end = document.cookie.length;\n\n
+        \       return unescape(document.cookie.substring(c_start,c_end));\n        }\n
+        \   }\n    return \"\";\n}\nfunction setCookie(c_name, value, expiredays)
+        { // Local function for setting a value of a cookie\n    var exdate = new
+        Date();\n    exdate.setDate(exdate.getDate()+expiredays);\n    document.cookie
+        = c_name + \"=\" + escape(value) + ((expiredays==null) ? \"\" : \";expires=\"
+        + exdate.toGMTString()) + \";path=/\";\n}\nfunction getHostUri() {\n    var
+        loc = document.location;\n    return loc.toString();\n}\nsetCookie('YPF8827340282Jdskjhfiw_928937459182JAX666',
+        '75.69.230.57', 10);\ntry {  \n    location.reload(true);  \n} catch (err1)
+        {  \n    try {  \n        location.reload();  \n    } catch (err2) {  \n    \tlocation.href
+        = getHostUri();  \n    }  \n}\n</script>\n</head>\n<body>\n<noscript>This
+        site requires JavaScript and Cookies to be enabled. Please change your browser
+        settings or upgrade your browser.</noscript>\n</body>\n</html>\n"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 18:59:59 GMT
+- request:
+    method: get
+    uri: http://jakubowski.org/verona
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Nov 2017 18:59:59 GMT
+      Content-Type:
+      - text/html
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      X-Dis-Request-Id:
+      - 7d1c62014554fdcf82f461af3c59909b
+      P3p:
+      - CP="NON DSP COR ADMa OUR IND UNI COM NAV INT"
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n<meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n<meta
+        http-equiv=\"Content-Script-Type\" content=\"text/javascript\">\n<script type=\"text/javascript\">\nfunction
+        getCookie(c_name) { // Local function for getting a cookie value\n    if (document.cookie.length
+        > 0) {\n        c_start = document.cookie.indexOf(c_name + \"=\");\n        if
+        (c_start!=-1) {\n        c_start=c_start + c_name.length + 1;\n        c_end=document.cookie.indexOf(\";\",
+        c_start);\n\n        if (c_end==-1) \n            c_end = document.cookie.length;\n\n
+        \       return unescape(document.cookie.substring(c_start,c_end));\n        }\n
+        \   }\n    return \"\";\n}\nfunction setCookie(c_name, value, expiredays)
+        { // Local function for setting a value of a cookie\n    var exdate = new
+        Date();\n    exdate.setDate(exdate.getDate()+expiredays);\n    document.cookie
+        = c_name + \"=\" + escape(value) + ((expiredays==null) ? \"\" : \";expires=\"
+        + exdate.toGMTString()) + \";path=/\";\n}\nfunction getHostUri() {\n    var
+        loc = document.location;\n    return loc.toString();\n}\nsetCookie('YPF8827340282Jdskjhfiw_928937459182JAX666',
+        '75.69.230.57', 10);\ntry {  \n    location.reload(true);  \n} catch (err1)
+        {  \n    try {  \n        location.reload();  \n    } catch (err2) {  \n    \tlocation.href
+        = getHostUri();  \n    }  \n}\n</script>\n</head>\n<body>\n<noscript>This
+        site requires JavaScript and Cookies to be enabled. Please change your browser
+        settings or upgrade your browser.</noscript>\n</body>\n</html>\n"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 18:59:59 GMT
+- request:
+    method: get
+    uri: http://jakubowski.org/verona
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Nov 2017 18:59:59 GMT
+      Content-Type:
+      - text/html
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      X-Dis-Request-Id:
+      - b0faececc91be66c01d4294f4d7acc01
+      P3p:
+      - CP="NON DSP COR ADMa OUR IND UNI COM NAV INT"
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n<meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n<meta
+        http-equiv=\"Content-Script-Type\" content=\"text/javascript\">\n<script type=\"text/javascript\">\nfunction
+        getCookie(c_name) { // Local function for getting a cookie value\n    if (document.cookie.length
+        > 0) {\n        c_start = document.cookie.indexOf(c_name + \"=\");\n        if
+        (c_start!=-1) {\n        c_start=c_start + c_name.length + 1;\n        c_end=document.cookie.indexOf(\";\",
+        c_start);\n\n        if (c_end==-1) \n            c_end = document.cookie.length;\n\n
+        \       return unescape(document.cookie.substring(c_start,c_end));\n        }\n
+        \   }\n    return \"\";\n}\nfunction setCookie(c_name, value, expiredays)
+        { // Local function for setting a value of a cookie\n    var exdate = new
+        Date();\n    exdate.setDate(exdate.getDate()+expiredays);\n    document.cookie
+        = c_name + \"=\" + escape(value) + ((expiredays==null) ? \"\" : \";expires=\"
+        + exdate.toGMTString()) + \";path=/\";\n}\nfunction getHostUri() {\n    var
+        loc = document.location;\n    return loc.toString();\n}\nsetCookie('YPF8827340282Jdskjhfiw_928937459182JAX666',
+        '75.69.230.57', 10);\ntry {  \n    location.reload(true);  \n} catch (err1)
+        {  \n    try {  \n        location.reload();  \n    } catch (err2) {  \n    \tlocation.href
+        = getHostUri();  \n    }  \n}\n</script>\n</head>\n<body>\n<noscript>This
+        site requires JavaScript and Cookies to be enabled. Please change your browser
+        settings or upgrade your browser.</noscript>\n</body>\n</html>\n"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 18:59:59 GMT
+- request:
+    method: get
+    uri: http://jakubowski.org/verona
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Nov 2017 18:59:59 GMT
+      Content-Type:
+      - text/html
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      X-Dis-Request-Id:
+      - 9f4a6dea4909f775fd46dd92792881c3
+      P3p:
+      - CP="NON DSP COR ADMa OUR IND UNI COM NAV INT"
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n<meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n<meta
+        http-equiv=\"Content-Script-Type\" content=\"text/javascript\">\n<script type=\"text/javascript\">\nfunction
+        getCookie(c_name) { // Local function for getting a cookie value\n    if (document.cookie.length
+        > 0) {\n        c_start = document.cookie.indexOf(c_name + \"=\");\n        if
+        (c_start!=-1) {\n        c_start=c_start + c_name.length + 1;\n        c_end=document.cookie.indexOf(\";\",
+        c_start);\n\n        if (c_end==-1) \n            c_end = document.cookie.length;\n\n
+        \       return unescape(document.cookie.substring(c_start,c_end));\n        }\n
+        \   }\n    return \"\";\n}\nfunction setCookie(c_name, value, expiredays)
+        { // Local function for setting a value of a cookie\n    var exdate = new
+        Date();\n    exdate.setDate(exdate.getDate()+expiredays);\n    document.cookie
+        = c_name + \"=\" + escape(value) + ((expiredays==null) ? \"\" : \";expires=\"
+        + exdate.toGMTString()) + \";path=/\";\n}\nfunction getHostUri() {\n    var
+        loc = document.location;\n    return loc.toString();\n}\nsetCookie('YPF8827340282Jdskjhfiw_928937459182JAX666',
+        '75.69.230.57', 10);\ntry {  \n    location.reload(true);  \n} catch (err1)
+        {  \n    try {  \n        location.reload();  \n    } catch (err2) {  \n    \tlocation.href
+        = getHostUri();  \n    }  \n}\n</script>\n</head>\n<body>\n<noscript>This
+        site requires JavaScript and Cookies to be enabled. Please change your browser
+        settings or upgrade your browser.</noscript>\n</body>\n</html>\n"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 18:59:59 GMT
+- request:
+    method: get
+    uri: http://jakubowski.org/verona
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 16 Nov 2017 18:59:59 GMT
+      Content-Type:
+      - text/html
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      X-Dis-Request-Id:
+      - 622272eb7adc0beb19e2f7b9418ec317
+      P3p:
+      - CP="NON DSP COR ADMa OUR IND UNI COM NAV INT"
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n<meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n<meta
+        http-equiv=\"Content-Script-Type\" content=\"text/javascript\">\n<script type=\"text/javascript\">\nfunction
+        getCookie(c_name) { // Local function for getting a cookie value\n    if (document.cookie.length
+        > 0) {\n        c_start = document.cookie.indexOf(c_name + \"=\");\n        if
+        (c_start!=-1) {\n        c_start=c_start + c_name.length + 1;\n        c_end=document.cookie.indexOf(\";\",
+        c_start);\n\n        if (c_end==-1) \n            c_end = document.cookie.length;\n\n
+        \       return unescape(document.cookie.substring(c_start,c_end));\n        }\n
+        \   }\n    return \"\";\n}\nfunction setCookie(c_name, value, expiredays)
+        { // Local function for setting a value of a cookie\n    var exdate = new
+        Date();\n    exdate.setDate(exdate.getDate()+expiredays);\n    document.cookie
+        = c_name + \"=\" + escape(value) + ((expiredays==null) ? \"\" : \";expires=\"
+        + exdate.toGMTString()) + \";path=/\";\n}\nfunction getHostUri() {\n    var
+        loc = document.location;\n    return loc.toString();\n}\nsetCookie('YPF8827340282Jdskjhfiw_928937459182JAX666',
+        '75.69.230.57', 10);\ntry {  \n    location.reload(true);  \n} catch (err1)
+        {  \n    try {  \n        location.reload();  \n    } catch (err2) {  \n    \tlocation.href
+        = getHostUri();  \n    }  \n}\n</script>\n</head>\n<body>\n<noscript>This
+        site requires JavaScript and Cookies to be enabled. Please change your browser
+        settings or upgrade your browser.</noscript>\n</body>\n</html>\n"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 18:59:59 GMT
+- request:
+    method: get
+    uri: http://hackett.org/junius_kovacek
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Connection:
+      - close
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      Location:
+      - "/junius_kovacek"
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:01:29 GMT
+- request:
+    method: get
+    uri: http://hackett.org/junius_kovacek
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Thu, 16 Nov 2017 19:01:29 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - COOKIE=10.22.16.235.1510858889377629; path=/
+      - referrer=; path=/
+      - referrer=hackett.org; path=/
+      - t=8d939f30cb0011e79c3ffa163e7e13f7; path=/
+      Vary:
+      - Accept-Encoding,User-Agent
+      Cartoon:
+      - lander-06-prod
+      Content-Length:
+      - '185'
+      Connection:
+      - close
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <html>
+        <head><title>404 Not Found</title></head>
+        <body>
+        <h1>404 Not Found</h1>
+        /junius_kovacek was not found on this server.
+        <p /><hr />
+        <small>
+        Resin-3.0.18 (built Fri, 24 Feb 2006 02:47:03 PST)
+        </small>
+        </body></html>
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:01:29 GMT
+- request:
+    method: get
+    uri: http://hackett.org/junius_kovacek
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Thu, 16 Nov 2017 19:01:29 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - COOKIE=10.22.16.235.1510858889662436; path=/
+      - referrer=; path=/
+      - referrer=hackett.org; path=/
+      - t=8dbef4f0cb0011e7a8a2fa163e1a384a; path=/
+      Vary:
+      - Accept-Encoding,User-Agent
+      Cartoon:
+      - lander-09-prod
+      Content-Length:
+      - '185'
+      Connection:
+      - close
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <html>
+        <head><title>404 Not Found</title></head>
+        <body>
+        <h1>404 Not Found</h1>
+        /junius_kovacek was not found on this server.
+        <p /><hr />
+        <small>
+        Resin-3.0.18 (built Fri, 24 Feb 2006 02:47:03 PST)
+        </small>
+        </body></html>
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:01:29 GMT
+- request:
+    method: get
+    uri: http://hackett.org/junius_kovacek
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Thu, 16 Nov 2017 19:01:29 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - COOKIE=10.22.16.235.1510858889997451; path=/
+      - referrer=; path=/
+      - referrer=hackett.org; path=/
+      - t=8df212e0cb0011e79536fa163ee5b2f2; path=/
+      Vary:
+      - Accept-Encoding,User-Agent
+      Cartoon:
+      - lander-02-prod
+      Content-Length:
+      - '185'
+      Connection:
+      - close
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <html>
+        <head><title>404 Not Found</title></head>
+        <body>
+        <h1>404 Not Found</h1>
+        /junius_kovacek was not found on this server.
+        <p /><hr />
+        <small>
+        Resin-3.0.18 (built Fri, 24 Feb 2006 02:47:03 PST)
+        </small>
+        </body></html>
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:01:30 GMT
+- request:
+    method: get
+    uri: http://hackett.org/junius_kovacek
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Thu, 16 Nov 2017 19:01:30 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - COOKIE=10.22.16.235.1510858890272264; path=/
+      - referrer=; path=/
+      - referrer=hackett.org; path=/
+      - t=8e1c3020cb0011e7a8a2fa163e1a384a; path=/
+      Vary:
+      - Accept-Encoding,User-Agent
+      Cartoon:
+      - lander-09-prod
+      Content-Length:
+      - '185'
+      Connection:
+      - close
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <html>
+        <head><title>404 Not Found</title></head>
+        <body>
+        <h1>404 Not Found</h1>
+        /junius_kovacek was not found on this server.
+        <p /><hr />
+        <small>
+        Resin-3.0.18 (built Fri, 24 Feb 2006 02:47:03 PST)
+        </small>
+        </body></html>
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:01:30 GMT
+- request:
+    method: get
+    uri: http://hackett.org/junius_kovacek
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Thu, 16 Nov 2017 19:01:30 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - COOKIE=10.22.16.235.1510858890534184; path=/
+      - referrer=; path=/
+      - referrer=hackett.org; path=/
+      - t=8e440371cb0011e7a8a2fa163e1a384a; path=/
+      Vary:
+      - Accept-Encoding,User-Agent
+      Cartoon:
+      - lander-09-prod
+      Content-Length:
+      - '185'
+      Connection:
+      - close
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <html>
+        <head><title>404 Not Found</title></head>
+        <body>
+        <h1>404 Not Found</h1>
+        /junius_kovacek was not found on this server.
+        <p /><hr />
+        <small>
+        Resin-3.0.18 (built Fri, 24 Feb 2006 02:47:03 PST)
+        </small>
+        </body></html>
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:01:30 GMT
+- request:
+    method: get
+    uri: http://hackett.org/junius_kovacek
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Thu, 16 Nov 2017 19:01:30 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - COOKIE=10.22.16.235.1510858890791587; path=/
+      - referrer=; path=/
+      - referrer=hackett.org; path=/
+      - t=8e6b6190cb0011e79769fa163e44d115; path=/
+      Vary:
+      - Accept-Encoding,User-Agent
+      Cartoon:
+      - lander-10-prod
+      Content-Length:
+      - '185'
+      Connection:
+      - close
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <html>
+        <head><title>404 Not Found</title></head>
+        <body>
+        <h1>404 Not Found</h1>
+        /junius_kovacek was not found on this server.
+        <p /><hr />
+        <small>
+        Resin-3.0.18 (built Fri, 24 Feb 2006 02:47:03 PST)
+        </small>
+        </body></html>
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:01:30 GMT
+- request:
+    method: get
+    uri: http://conn.info/katrine_hansen
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=900
+      Content-Type:
+      - text/html; charset=utf-8
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 16 Nov 2017 19:05:47 GMT
+      Content-Length:
+      - '361'
+      Age:
+      - '1'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "\r\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\r\n   \"http://www.w3.org/TR/html4/strict.dtd\">\r\n<html>\r\n\r\n<head>\r\n
+        \ <title>conn.info</title>\r\n  \r\n</head>\r\n<frameset rows=\"100%,*\" border=\"0\">\r\n
+        \ <frame src=\"http://synph.com/katrine_hansen\" frameborder=\"0\" />\r\n
+        \ <frame frameborder=\"0\" noresize />\r\n</frameset>\r\n\r\n<!-- pageok -->\r\n<!--
+        10 -->\r\n<!-- -->\r\n</html>"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:05:48 GMT
+- request:
+    method: get
+    uri: http://conn.info/katrine_hansen
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=900
+      Content-Type:
+      - text/html; charset=utf-8
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 16 Nov 2017 19:05:47 GMT
+      Content-Length:
+      - '361'
+      Age:
+      - '1'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "\r\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\r\n   \"http://www.w3.org/TR/html4/strict.dtd\">\r\n<html>\r\n\r\n<head>\r\n
+        \ <title>conn.info</title>\r\n  \r\n</head>\r\n<frameset rows=\"100%,*\" border=\"0\">\r\n
+        \ <frame src=\"http://synph.com/katrine_hansen\" frameborder=\"0\" />\r\n
+        \ <frame frameborder=\"0\" noresize />\r\n</frameset>\r\n\r\n<!-- pageok -->\r\n<!--
+        12 -->\r\n<!-- -->\r\n</html>"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:05:48 GMT
+- request:
+    method: get
+    uri: http://conn.info/katrine_hansen
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=900
+      Content-Type:
+      - text/html; charset=utf-8
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 16 Nov 2017 19:05:48 GMT
+      Content-Length:
+      - '361'
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "\r\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\r\n   \"http://www.w3.org/TR/html4/strict.dtd\">\r\n<html>\r\n\r\n<head>\r\n
+        \ <title>conn.info</title>\r\n  \r\n</head>\r\n<frameset rows=\"100%,*\" border=\"0\">\r\n
+        \ <frame src=\"http://synph.com/katrine_hansen\" frameborder=\"0\" />\r\n
+        \ <frame frameborder=\"0\" noresize />\r\n</frameset>\r\n\r\n<!-- pageok -->\r\n<!--
+        07 -->\r\n<!-- -->\r\n</html>"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:05:48 GMT
+- request:
+    method: get
+    uri: http://conn.info/katrine_hansen
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=900
+      Content-Type:
+      - text/html; charset=utf-8
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 16 Nov 2017 19:05:48 GMT
+      Content-Length:
+      - '361'
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "\r\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\r\n   \"http://www.w3.org/TR/html4/strict.dtd\">\r\n<html>\r\n\r\n<head>\r\n
+        \ <title>conn.info</title>\r\n  \r\n</head>\r\n<frameset rows=\"100%,*\" border=\"0\">\r\n
+        \ <frame src=\"http://synph.com/katrine_hansen\" frameborder=\"0\" />\r\n
+        \ <frame frameborder=\"0\" noresize />\r\n</frameset>\r\n\r\n<!-- pageok -->\r\n<!--
+        07 -->\r\n<!-- -->\r\n</html>"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:05:49 GMT
+- request:
+    method: get
+    uri: http://conn.info/katrine_hansen
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=900
+      Content-Type:
+      - text/html; charset=utf-8
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 16 Nov 2017 19:05:48 GMT
+      Content-Length:
+      - '361'
+      Age:
+      - '1'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "\r\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\r\n   \"http://www.w3.org/TR/html4/strict.dtd\">\r\n<html>\r\n\r\n<head>\r\n
+        \ <title>conn.info</title>\r\n  \r\n</head>\r\n<frameset rows=\"100%,*\" border=\"0\">\r\n
+        \ <frame src=\"http://synph.com/katrine_hansen\" frameborder=\"0\" />\r\n
+        \ <frame frameborder=\"0\" noresize />\r\n</frameset>\r\n\r\n<!-- pageok -->\r\n<!--
+        10 -->\r\n<!-- -->\r\n</html>"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:05:49 GMT
+- request:
+    method: get
+    uri: http://conn.info/katrine_hansen
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=900
+      Content-Type:
+      - text/html; charset=utf-8
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 16 Nov 2017 19:05:48 GMT
+      Content-Length:
+      - '361'
+      Age:
+      - '63'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "\r\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\r\n   \"http://www.w3.org/TR/html4/strict.dtd\">\r\n<html>\r\n\r\n<head>\r\n
+        \ <title>conn.info</title>\r\n  \r\n</head>\r\n<frameset rows=\"100%,*\" border=\"0\">\r\n
+        \ <frame src=\"http://synph.com/katrine_hansen\" frameborder=\"0\" />\r\n
+        \ <frame frameborder=\"0\" noresize />\r\n</frameset>\r\n\r\n<!-- pageok -->\r\n<!--
+        07 -->\r\n<!-- -->\r\n</html>"
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 19:06:51 GMT
+recorded_with: VCR 3.0.3

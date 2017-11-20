@@ -47,7 +47,7 @@ class Recipe < ApplicationRecord
     else
       doc.traverse do |node|
         if node.children.length == 0 && node.parent.name != 'script' && node.parent.name != 'meta' && node.parent.name != 'style'
-          if node.text =~ /^\s*\d.{0,6}(cup|c\.|teaspoon|tablespoon|tbsp|tsp|egg|pounds|ounces)/i
+          if node.text =~ /^\s*\d.{0,6}(cup|c\.|teaspoon|tablespoon|tbsp|tsp|egg|pounds|ounces|quart|gallon)/i
             parent_node = get_parent_node(node)
             ingredients = children_text(parent_node)
             ingredients = remove_whitespace(ingredients)
