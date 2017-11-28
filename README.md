@@ -31,6 +31,23 @@ RECIPES_APP_ID=<YOUR_APP_ID_HERE>
 RECIPES_API_KEY=<YOUR_API_KEY_HERE>
 ```
 
+## Key Features
+#### Recipe search
+Recipe Search functions whether the user is logged in or not. The search query, including ingredient quantity and filters, is sent to the backend which reformats the query and sends it to the Edamam API and saves the search results to the database
+
+#### Saving Recipes
+Logged in users can save recipes to their collection of recipes or to their weekly menu. This is accomplished via customized many to many relationships on the model level such that user.menu recalls the recipes saved to the menu and user.recipes recalls all the user's saved recipes.
+
+#### Adding a recipe from another website
+Entering a url of a recipe from another website creates a new recipe and automatically calls the following methods defined on the recipe model
+```
+.get_title
+.get_image
+.get_ingredients
+.get_directions
+```
+Each method utilizes the Nokogiri gem to parse the webpage. `.get_ingredients` & `.get_directions` find one of the ingredients or direction items and then call additional methods to recursively find all of the other ingredients or directions. These functions work on most major recipe websites, though may have issues on smaller/lesser known websites. Suggestions for improving these functions are always welcome.
+
 ## Test suite
 Ruby testing using RSpec. Run with `$ rake`
 
