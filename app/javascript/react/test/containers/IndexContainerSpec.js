@@ -23,13 +23,13 @@ describe('IndexContainer', () => {
       ]
 
   beforeEach(() => {
+    spyOn(IndexContainer.prototype, 'updateRecipes').and.callThrough()
     spyOn(IndexContainer.prototype, 'handleShowSearchClick').and.callThrough()
     spyOn(IndexContainer.prototype, 'handleSearchChange').and.callThrough()
     spyOn(IndexContainer.prototype, 'createUrl').and.callThrough()
     spyOn(IndexContainer.prototype, 'handleSearchClick')
     spyOn(IndexContainer.prototype, 'showMore')
     spyOn(IndexContainer.prototype, 'fetchCurrentUser')
-    spyOn(IndexContainer.prototype, 'saveRecipe')
     wrapper = mount(
       <IndexContainer />
     )
@@ -46,15 +46,6 @@ describe('IndexContainer', () => {
     expect(wrapper.find(SearchField)).toBePresent()
   });
 
-  it('should not render a button for My Recipes if the user is not logged in', () => {
-    expect(wrapper.find('#my-recipes')).not.toBePresent()
-  })
-
-  it('should render a button for My Recipes if the user is logged in', () => {
-    wrapper.setState({ userId: 1 })
-    expect(wrapper.find('#my-recipes').first()).toHaveText('My Recipes')
-  })
-
   it('should not render any errors', () => {
     expect(wrapper.find('.alert')).not.toBePresent()
   })
@@ -64,14 +55,22 @@ describe('IndexContainer', () => {
     expect(wrapper.find('.alert')).toHaveText('No results')
   })
 
-  it('should not render Recipe Tiles or SearchField', () => {
+  it('should not render Recipe Tiles or SearchField or show More button', () => {
     expect(wrapper.find(RecipeTile)).not.toBePresent()
     expect(wrapper.find(SearchField)).not.toBePresent()
+    expect(wrapper.find('.button').at(1)).not.toBePresent()
   })
 
-  it('should render recipe Tiles after clicking on the search button', () => {
+  it('should render the SearchField component after clicking on the find new recipes button', () => {
+    wrapper.find('.button').simulate('click')
+    expect(wrapper.find(SearchField)).toBePresent()
+  })
+
+  it('should render Recipe Tiles and Show More button after clicking on the search button', () => {
     wrapper.setState({ recipes: recipe })
     expect(wrapper.find(RecipeTile).first()).toHaveText('Chicken Breast With Salsa')
+    expect(wrapper.find('.button').at(1)).toHaveText('Show More')
+
   })
 
   it('should render additional recipes when the showMore button is clicked', () => {
@@ -80,5 +79,9 @@ describe('IndexContainer', () => {
     expect(IndexContainer.prototype.showMore).toHaveBeenCalled()
     wrapper.setState({ recipes: recipe.concat(recipe2) })
     expect(wrapper.find(RecipeTile).at(1)).toHaveText('Chicken Soup')
+  })
+
+  it('should render the edaman badge', () => {
+    expect(wrapper.find('#edamam-badge')).toBePresent()
   })
 });

@@ -33,6 +33,7 @@ describe('SearchField', () => {
 
   it('should invoke the showFilters method when the filter button is clicked and show the filterBox component', () => {
     wrapper.find('a').simulate('click')
+    expect(SearchField.prototype.showFilters).toHaveBeenCalled()
     expect(wrapper.find(FilterBox)).toBePresent()
   })
 })

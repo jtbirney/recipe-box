@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import UserShowContainer from '../../src/containers/UserShowContainer'
+import RecipeTileContainer from '../../src/containers/RecipeTileContainer'
 import RecipeTile from '../../src/components/RecipeTile'
 
 describe('UserShowContainer', () => {
@@ -21,7 +22,7 @@ describe('UserShowContainer', () => {
       newError = 'Can\'t find your recipes.'
 
   beforeEach(() => {
-    spyOn(UserShowContainer.prototype, 'deleteRecipe')
+    spyOn(UserShowContainer.prototype, 'updateRecipes').and.callThrough()
     spyOn(UserShowContainer.prototype, 'componentDidMount')
     wrapper = mount(
       <UserShowContainer
@@ -30,21 +31,11 @@ describe('UserShowContainer', () => {
     )
   })
 
-  it('should not render a RecipeTile if the user has no recipes', () => {
-    expect(wrapper.find(RecipeTile)).not.toBePresent()
+  it('should render a RecipeTileContainer if the user has recipes', () => {
+    expect(wrapper.find(RecipeTileContainer)).toBePresent()
   })
 
-  it('should render a RecipeTile if the user has recipes', () => {
-    wrapper.setState({ recipes: newRecipe })
-    expect(wrapper.find(RecipeTile)).toBePresent()
-  })
-
-  it('should not render an error', () => {
-    expect(wrapper.find('h3')).toHaveText('')
-  })
-
-  it('should render an error if the user is not logged in', () => {
-    wrapper.setState({ error: newError })
-    expect(wrapper.find('h3')).toHaveText('Can\'t find your recipes.')
+  it('should render an h1 with the text My Recipes', () => {
+    expect(wrapper.find('h1')).toHaveText('My Recipes')
   })
 })
