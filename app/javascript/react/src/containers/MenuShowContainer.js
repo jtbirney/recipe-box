@@ -10,6 +10,7 @@ class MenuShowContainer extends Component {
       recipes: []
     }
     this.updateRecipes = this.updateRecipes.bind(this)
+    this.fetchCurrentUser = this.fetchCurrentUser.bind(this)
   }
 
   updateRecipes(updatedRecipe, method) {
@@ -19,7 +20,6 @@ class MenuShowContainer extends Component {
         return recipe.id !== updatedRecipe.id
       })
     }
-    console.log(newRecipes)
     this.setState({ recipes: newRecipes })
   }
 
@@ -63,7 +63,6 @@ class MenuShowContainer extends Component {
   }
 
   render() {
-    console.log(this.state.recipes)
     return(
       <div className="grid-container">
         <div className="grid-x">

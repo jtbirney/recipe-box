@@ -4,14 +4,17 @@ import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import Layout from '../../src/containers/Layout'
 import SigninForm from '../../src/containers/SigninForm'
+import NavigationMenu from '../../src/components/NavigationMenu'
 
 describe('Layout', () => {
   let wrapper;
 
   beforeEach(() => {
-    spyOn(Layout.prototype, 'logIn')
+    spyOn(Layout.prototype, 'logIn').and.callThrough()
     spyOn(Layout.prototype, 'logOut')
-    spyOn(Layout.prototype, 'componentDidMount')
+    spyOn(Layout.prototype, 'showLogin').and.callThrough()
+    spyOn(Layout.prototype, 'fetchCurrentUser')
+    spyOn(Layout.prototype, 'componentWillReceiveProps')
     wrapper = mount(
       <Layout />
     )
@@ -48,14 +51,12 @@ describe('Layout', () => {
     expect(wrapper.find('#username')).toHaveText('username')
   });
 
-  it('should render a link with className button and text "Log Out" when user is logged in', () => {
-    wrapper.setState({ username: "username" })
-    expect(wrapper.find('.button').at(1)).toHaveText('Log Out')
-  });
+  it('should not render a NavigationMenu component when a user is not signed in', () => {
+    expect(wrapper.find(NavigationMenu)).not.toBePresent()
+  })
 
-  it('should call the LogOut function when a user clicks logout', () => {
+  it('should render a NavigationMenu component when a user is signed in', () => {
     wrapper.setState({ username: "username" })
-    wrapper.find('.button').at(1).simulate('click')
-    expect(Layout.prototype.logOut).toHaveBeenCalled()
-  });
+    expect(wrapper.find(NavigationMenu)).toBePresent()
+  })
 });

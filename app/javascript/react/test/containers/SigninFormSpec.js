@@ -17,9 +17,10 @@ describe('SigninForm', () => {
     )
   })
 
-  it('should render a form with a dropdown pane', () => {
+  it('should render a form', () => {
     expect(wrapper.find('form')).toHaveProp('id', 'login');
     expect(wrapper.find(FormField)).toBePresent();
+    expect(wrapper.find('h4')).toHaveText('Sign In')
     expect(wrapper.find('#sign-in-submit')).toHaveClassName('button');
     expect(wrapper.find('#sign-in-submit')).toHaveValue('Submit');
   });

@@ -18,14 +18,15 @@ describe('SignupForm', () => {
     )
   })
 
-  it('should render a form with a dropdown pane', () => {
+  it('should render a form', () => {
     expect(wrapper.find('form')).toBePresent();
+    expect(wrapper.find('h1')).toHaveText('Signup')
     expect(wrapper.find(FormField)).toBePresent();
     expect(wrapper.find('#sign-up-submit')).toHaveClassName('button');
     expect(wrapper.find('#sign-up-submit')).toHaveValue('Submit');
   });
 
-  it('handleChange and validateFields should be invoked when the input is changed', () => {
+  it('should invode handleChange and validateFields when the input is changed', () => {
     wrapper.find('input').first().simulate('change', {target: {value: username }});
     expect(SignupForm.prototype.handleChange).toHaveBeenCalled()
     expect(SignupForm.prototype.validateFields).toHaveBeenCalled()
